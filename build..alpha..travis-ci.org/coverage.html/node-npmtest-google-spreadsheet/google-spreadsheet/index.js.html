@@ -1,0 +1,2216 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-google-spreadsheet/google-spreadsheet/index.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-google-spreadsheet">npmtest-google-spreadsheet (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-google-spreadsheet/google-spreadsheet/index.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">5.67% <small>(22 / 388)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 205)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">0% <small>(0 / 76)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">6.23% <small>(22 / 353)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-google-spreadsheet/google-spreadsheet/</a> &#187; index.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var async = require("async");
+var request = require("request");
+var xml2js = require("xml2js");
+var http = require("http");
+var querystring = require("querystring");
+var _ = require('lodash');
+var GoogleAuth = require("google-auth-library");
+&nbsp;
+var GOOGLE_FEED_URL = "https://spreadsheets.google.com/feeds/";
+var GOOGLE_AUTH_SCOPE = ["https://spreadsheets.google.com/feeds"];
+&nbsp;
+var REQUIRE_AUTH_MESSAGE = 'You must authenticate to modify sheet data';
+&nbsp;
+// The main class that represents a single sheet
+// this is the main module.exports
+var GoogleSpreadsheet = <span class="fstat-no" title="function not covered" >function( ss_key, auth_id, options ){</span>
+<span class="cstat-no" title="statement not covered" >  var self = this;</span>
+<span class="cstat-no" title="statement not covered" >  var google_auth = null;</span>
+<span class="cstat-no" title="statement not covered" >  var visibility = 'public';</span>
+<span class="cstat-no" title="statement not covered" >  var projection = 'values';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var auth_mode = 'anonymous';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var auth_client = new GoogleAuth();</span>
+<span class="cstat-no" title="statement not covered" >  var jwt_client;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  options = options || {};</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var xml_parser = new xml2js.Parser({</span>
+    // options carried over from older version of xml2js
+    // might want to update how the code works, but for now this is fine
+    explicitArray: false,
+    explicitRoot: false
+  });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if ( !ss_key ) {</span>
+<span class="cstat-no" title="statement not covered" >    throw new Error("Spreadsheet key not provided.");</span>
+  }
+&nbsp;
+  // auth_id may be null
+<span class="cstat-no" title="statement not covered" >  setAuthAndDependencies(auth_id);</span>
+&nbsp;
+  // Authentication Methods
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.setAuthToken = <span class="fstat-no" title="function not covered" >function( auth_id ) {</span></span>
+<span class="cstat-no" title="statement not covered" >    if (auth_mode == 'anonymous') <span class="cstat-no" title="statement not covered" >auth_mode = 'token';</span></span>
+<span class="cstat-no" title="statement not covered" >    setAuthAndDependencies(auth_id);</span>
+  }
+&nbsp;
+  // deprecated username/password login method
+  // leaving it here to help notify users why it doesn't work
+<span class="cstat-no" title="statement not covered" >  this.setAuth = <span class="fstat-no" title="function not covered" >function( username, password, cb ){</span></span>
+<span class="cstat-no" title="statement not covered" >    return cb(new Error('Google has officially deprecated ClientLogin. Please upgrade this module and see the readme for more instrucations'))</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.useServiceAccountAuth = <span class="fstat-no" title="function not covered" >function( creds, cb ){</span></span>
+<span class="cstat-no" title="statement not covered" >    if (typeof creds == 'string') {</span>
+<span class="cstat-no" title="statement not covered" >      try {</span>
+<span class="cstat-no" title="statement not covered" >        creds = require(creds);</span>
+      } catch (err) {
+<span class="cstat-no" title="statement not covered" >        return cb(err);</span>
+      }
+    }
+<span class="cstat-no" title="statement not covered" >    jwt_client = new auth_client.JWT(creds.client_email, null, creds.private_key, GOOGLE_AUTH_SCOPE, null);</span>
+<span class="cstat-no" title="statement not covered" >    renewJwtAuth(cb);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function renewJwtAuth(cb) {</span>
+<span class="cstat-no" title="statement not covered" >    auth_mode = 'jwt';</span>
+<span class="cstat-no" title="statement not covered" >    jwt_client.authorize(<span class="fstat-no" title="function not covered" >function (err, token) {</span></span>
+<span class="cstat-no" title="statement not covered" >      if (err) <span class="cstat-no" title="statement not covered" >return cb(err);</span></span>
+<span class="cstat-no" title="statement not covered" >      self.setAuthToken({</span>
+        type: token.token_type,
+        value: token.access_token,
+        expires: token.expiry_date
+      });
+<span class="cstat-no" title="statement not covered" >      cb()</span>
+    });
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.isAuthActive = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >    return !!google_auth;</span>
+  }
+&nbsp;
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function setAuthAndDependencies( auth ) {</span>
+<span class="cstat-no" title="statement not covered" >    google_auth = auth;</span>
+<span class="cstat-no" title="statement not covered" >    if (!options.visibility){</span>
+<span class="cstat-no" title="statement not covered" >      visibility = google_auth ? 'private' : 'public';</span>
+    }
+<span class="cstat-no" title="statement not covered" >    if (!options.projection){</span>
+<span class="cstat-no" title="statement not covered" >      projection = google_auth ? 'full' : 'values';</span>
+    }
+  }
+&nbsp;
+  // This method is used internally to make all requests
+<span class="cstat-no" title="statement not covered" >  this.makeFeedRequest = <span class="fstat-no" title="function not covered" >function( url_params, method, query_or_data, cb ){</span></span>
+<span class="cstat-no" title="statement not covered" >    var url;</span>
+<span class="cstat-no" title="statement not covered" >    var headers = {};</span>
+<span class="cstat-no" title="statement not covered" >    if (!cb ) <span class="cstat-no" title="statement not covered" >cb = <span class="fstat-no" title="function not covered" >function(){</span>};</span></span>
+<span class="cstat-no" title="statement not covered" >    if ( typeof(url_params) == 'string' ) {</span>
+      // used for edit / delete requests
+<span class="cstat-no" title="statement not covered" >      url = url_params;</span>
+    } else <span class="cstat-no" title="statement not covered" >if ( Array.isArray( url_params )){</span>
+      //used for get and post requets
+<span class="cstat-no" title="statement not covered" >      url_params.push( visibility, projection );</span>
+<span class="cstat-no" title="statement not covered" >      url = GOOGLE_FEED_URL + url_params.join("/");</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    async.series({</span>
+      auth: <span class="fstat-no" title="function not covered" >function(step) {</span>
+<span class="cstat-no" title="statement not covered" >        if (auth_mode != 'jwt') <span class="cstat-no" title="statement not covered" >return step();</span></span>
+        // check if jwt token is expired
+<span class="cstat-no" title="statement not covered" >        if (google_auth.expires &gt; +new Date()) <span class="cstat-no" title="statement not covered" >return step();</span></span>
+<span class="cstat-no" title="statement not covered" >        renewJwtAuth(step);</span>
+      },
+      request: <span class="fstat-no" title="function not covered" >function(result, step) {</span>
+<span class="cstat-no" title="statement not covered" >        if ( google_auth ) {</span>
+<span class="cstat-no" title="statement not covered" >          if (google_auth.type === 'Bearer') {</span>
+<span class="cstat-no" title="statement not covered" >            headers['Authorization'] = 'Bearer ' + google_auth.value;</span>
+          } else {
+<span class="cstat-no" title="statement not covered" >            headers['Authorization'] = "GoogleLogin auth=" + google_auth;</span>
+          }
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        headers['Gdata-Version'] = '3.0';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if ( method == 'POST' || method == 'PUT' ) {</span>
+<span class="cstat-no" title="statement not covered" >          headers['content-type'] = 'application/atom+xml';</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (method == 'PUT' || method == 'POST' &amp;&amp; url.indexOf('/batch') != -1) {</span>
+<span class="cstat-no" title="statement not covered" >          headers['If-Match'] = '*';</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if ( method == 'GET' &amp;&amp; query_or_data ) {</span>
+<span class="cstat-no" title="statement not covered" >          var query = "?" + querystring.stringify( query_or_data );</span>
+          // replacements are needed for using structured queries on getRows
+<span class="cstat-no" title="statement not covered" >          query = query.replace(/%3E/g,'&gt;');</span>
+<span class="cstat-no" title="statement not covered" >          query = query.replace(/%3D/g,'=');</span>
+<span class="cstat-no" title="statement not covered" >          query = query.replace(/%3C/g,'&lt;');</span>
+<span class="cstat-no" title="statement not covered" >          url += query;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        request( {</span>
+          url: url,
+          method: method,
+          headers: headers,
+          body: method == 'POST' || method == 'PUT' ? query_or_data : null
+        }, <span class="fstat-no" title="function not covered" >function(err, response, body){</span>
+<span class="cstat-no" title="statement not covered" >          if (err) {</span>
+<span class="cstat-no" title="statement not covered" >            return cb( err );</span>
+          } else <span class="cstat-no" title="statement not covered" >if( response.statusCode === 401 ) {</span>
+<span class="cstat-no" title="statement not covered" >            return cb( new Error("Invalid authorization key."));</span>
+          } else <span class="cstat-no" title="statement not covered" >if ( response.statusCode &gt;= 400 ) {</span>
+<span class="cstat-no" title="statement not covered" >            var message = _.isObject(body) ? JSON.stringify(body) : body.replace(/&amp;quot;/g, '"');</span>
+<span class="cstat-no" title="statement not covered" >            return cb( new Error("HTTP error "+response.statusCode+" ("+http.STATUS_CODES[response.statusCode])+") - "+message);</span>
+          } else <span class="cstat-no" title="statement not covered" >if ( response.statusCode === 200 &amp;&amp; response.headers['content-type'].indexOf('text/html') &gt;= 0 ) {</span>
+<span class="cstat-no" title="statement not covered" >            return cb( new Error("Sheet is private. Use authentication or make public. (see https://github.com/theoephraim/node-google-spreadsheet#a-note-on-authentication for details)"));</span>
+          }
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          if ( body ){</span>
+<span class="cstat-no" title="statement not covered" >            xml_parser.parseString(body, <span class="fstat-no" title="function not covered" >function(err, result){</span></span>
+<span class="cstat-no" title="statement not covered" >              if ( err ) <span class="cstat-no" title="statement not covered" >return cb( err );</span></span>
+<span class="cstat-no" title="statement not covered" >              cb( null, result, body );</span>
+            });
+          } else {
+<span class="cstat-no" title="statement not covered" >            if ( err ) <span class="cstat-no" title="statement not covered" >cb( err );</span></span>
+            else <span class="cstat-no" title="statement not covered" >cb( null, true );</span>
+          }
+        })
+      }
+    });
+  }
+&nbsp;
+&nbsp;
+&nbsp;
+  // public API methods
+<span class="cstat-no" title="statement not covered" >  this.getInfo = <span class="fstat-no" title="function not covered" >function( cb ){</span></span>
+<span class="cstat-no" title="statement not covered" >    self.makeFeedRequest( ["worksheets", ss_key], 'GET', null, <span class="fstat-no" title="function not covered" >function(err, data, xml) {</span></span>
+<span class="cstat-no" title="statement not covered" >      if ( err ) <span class="cstat-no" title="statement not covered" >return cb( err );</span></span>
+<span class="cstat-no" title="statement not covered" >      if (data===true) {</span>
+<span class="cstat-no" title="statement not covered" >        return cb(new Error('No response to getInfo call'))</span>
+      }
+<span class="cstat-no" title="statement not covered" >      var ss_data = {</span>
+        id: data.id,
+        title: data.title,
+        updated: data.updated,
+        author: data.author,
+        worksheets: []
+      }
+<span class="cstat-no" title="statement not covered" >      var worksheets = forceArray(data.entry);</span>
+<span class="cstat-no" title="statement not covered" >      worksheets.forEach( <span class="fstat-no" title="function not covered" >function( ws_data ) {</span></span>
+<span class="cstat-no" title="statement not covered" >        ss_data.worksheets.push( new SpreadsheetWorksheet( self, ws_data ) );</span>
+      });
+<span class="cstat-no" title="statement not covered" >      self.info = ss_data;</span>
+<span class="cstat-no" title="statement not covered" >      self.worksheets = ss_data.worksheets;</span>
+<span class="cstat-no" title="statement not covered" >      cb( null, ss_data );</span>
+    });
+  }
+&nbsp;
+  // NOTE: worksheet IDs start at 1
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.addWorksheet = <span class="fstat-no" title="function not covered" >function( opts, cb ) {</span></span>
+    // make opts optional
+<span class="cstat-no" title="statement not covered" >    if (typeof opts == 'function'){</span>
+<span class="cstat-no" title="statement not covered" >      cb = opts;</span>
+<span class="cstat-no" title="statement not covered" >      opts = {};</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    cb = cb || _.noop;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (!this.isAuthActive()) <span class="cstat-no" title="statement not covered" >return cb(new Error(REQUIRE_AUTH_MESSAGE));</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var defaults = {</span>
+      title: 'Worksheet '+(+new Date()),  // need a unique title
+      rowCount: 50,
+      colCount: 20
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var opts = _.extend({}, defaults, opts);</span>
+&nbsp;
+    // if column headers are set, make sure the sheet is big enough for them
+<span class="cstat-no" title="statement not covered" >    if (opts.headers &amp;&amp; opts.headers.length &gt; opts.colCount) {</span>
+<span class="cstat-no" title="statement not covered" >      opts.colCount = opts.headers.length;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var data_xml = '&lt;entry xmlns="http://www.w3.org/2005/Atom" xmlns:gs="http://schemas.google.com/spreadsheets/2006"&gt;&lt;title&gt;' +</span>
+        opts.title +
+      '&lt;/title&gt;&lt;gs:rowCount&gt;' +
+        opts.rowCount +
+      '&lt;/gs:rowCount&gt;&lt;gs:colCount&gt;' +
+        opts.colCount +
+      '&lt;/gs:colCount&gt;&lt;/entry&gt;';
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    self.makeFeedRequest( ["worksheets", ss_key], 'POST', data_xml, <span class="fstat-no" title="function not covered" >function(err, data, xml) {</span></span>
+<span class="cstat-no" title="statement not covered" >      if ( err ) <span class="cstat-no" title="statement not covered" >return cb( err );</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      var sheet = new SpreadsheetWorksheet( self, data );</span>
+<span class="cstat-no" title="statement not covered" >      self.worksheets = self.worksheets || [];</span>
+<span class="cstat-no" title="statement not covered" >      self.worksheets.push(sheet);</span>
+<span class="cstat-no" title="statement not covered" >      sheet.setHeaderRow(opts.headers, <span class="fstat-no" title="function not covered" >function(err) {</span></span>
+<span class="cstat-no" title="statement not covered" >        cb(err, sheet);</span>
+      })
+    });
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.removeWorksheet = <span class="fstat-no" title="function not covered" >function ( worksheet_id, cb ){</span></span>
+<span class="cstat-no" title="statement not covered" >    if (!this.isAuthActive()) <span class="cstat-no" title="statement not covered" >return cb(new Error(REQUIRE_AUTH_MESSAGE));</span></span>
+<span class="cstat-no" title="statement not covered" >    self.makeFeedRequest( ["worksheets", ss_key, worksheet_id], 'DELETE', cb );</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.getRows = <span class="fstat-no" title="function not covered" >function( worksheet_id, opts, cb ){</span></span>
+    // the first row is used as titles/keys and is not included
+&nbsp;
+    // opts is optional
+<span class="cstat-no" title="statement not covered" >    if ( typeof( opts ) == 'function' ){</span>
+<span class="cstat-no" title="statement not covered" >      cb = opts;</span>
+<span class="cstat-no" title="statement not covered" >      opts = {};</span>
+    }
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var query  = {}</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if ( opts.offset ) <span class="cstat-no" title="statement not covered" >query["start-index"] = opts.offset;</span></span>
+    else <span class="cstat-no" title="statement not covered" >if ( opts.start ) <span class="cstat-no" title="statement not covered" >query["start-index"] = opts.start;</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if ( opts.limit ) <span class="cstat-no" title="statement not covered" >query["max-results"] = opts.limit;</span></span>
+    else <span class="cstat-no" title="statement not covered" >if ( opts.num ) <span class="cstat-no" title="statement not covered" >query["max-results"] = opts.num;</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if ( opts.orderby ) <span class="cstat-no" title="statement not covered" >query["orderby"] = opts.orderby;</span></span>
+<span class="cstat-no" title="statement not covered" >    if ( opts.reverse ) <span class="cstat-no" title="statement not covered" >query["reverse"] = 'true';</span></span>
+<span class="cstat-no" title="statement not covered" >    if ( opts.query ) <span class="cstat-no" title="statement not covered" >query['sq'] = opts.query;</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    self.makeFeedRequest( ["list", ss_key, worksheet_id], 'GET', query, <span class="fstat-no" title="function not covered" >function(err, data, xml) {</span></span>
+<span class="cstat-no" title="statement not covered" >      if ( err ) <span class="cstat-no" title="statement not covered" >return cb( err );</span></span>
+<span class="cstat-no" title="statement not covered" >      if (data===true) {</span>
+<span class="cstat-no" title="statement not covered" >        return cb(new Error('No response to getRows call'))</span>
+      }
+&nbsp;
+      // gets the raw xml for each entry -- this is passed to the row object so we can do updates on it later
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      var entries_xml = xml.match(/&lt;entry[^&gt;]*&gt;([\s\S]*?)&lt;\/entry&gt;/g);</span>
+&nbsp;
+&nbsp;
+      // need to add the properties from the feed to the xml for the entries
+<span class="cstat-no" title="statement not covered" >      var feed_props = _.clone(data.$);</span>
+<span class="cstat-no" title="statement not covered" >      delete feed_props['gd:etag'];</span>
+<span class="cstat-no" title="statement not covered" >      var feed_props_str = _.reduce(feed_props, <span class="fstat-no" title="function not covered" >function(str, val, key){</span></span>
+<span class="cstat-no" title="statement not covered" >        return str+key+'=\''+val+'\' ';</span>
+      }, '');
+<span class="cstat-no" title="statement not covered" >      entries_xml = _.map(entries_xml, <span class="fstat-no" title="function not covered" >function(xml){</span></span>
+<span class="cstat-no" title="statement not covered" >        return xml.replace('&lt;entry ', '&lt;entry '+feed_props_str);</span>
+      });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      var rows = [];</span>
+<span class="cstat-no" title="statement not covered" >      var entries = forceArray( data.entry );</span>
+<span class="cstat-no" title="statement not covered" >      var i=0;</span>
+<span class="cstat-no" title="statement not covered" >      entries.forEach( <span class="fstat-no" title="function not covered" >function( row_data ) {</span></span>
+<span class="cstat-no" title="statement not covered" >        rows.push( new SpreadsheetRow( self, row_data, entries_xml[ i++ ] ) );</span>
+      });
+<span class="cstat-no" title="statement not covered" >      cb(null, rows);</span>
+    });
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.addRow = <span class="fstat-no" title="function not covered" >function( worksheet_id, data, cb ){</span></span>
+<span class="cstat-no" title="statement not covered" >    var data_xml = '&lt;entry xmlns="http://www.w3.org/2005/Atom" xmlns:gsx="http://schemas.google.com/spreadsheets/2006/extended"&gt;' + "\n";</span>
+<span class="cstat-no" title="statement not covered" >    Object.keys(data).forEach(<span class="fstat-no" title="function not covered" >function(key) {</span></span>
+<span class="cstat-no" title="statement not covered" >      if (key != 'id' &amp;&amp; key != 'title' &amp;&amp; key != 'content' &amp;&amp; key != '_links'){</span>
+<span class="cstat-no" title="statement not covered" >        data_xml += '&lt;gsx:'+ xmlSafeColumnName(key) + '&gt;' + xmlSafeValue(data[key]) + '&lt;/gsx:'+ xmlSafeColumnName(key) + '&gt;' + "\n"</span>
+      }
+    });
+<span class="cstat-no" title="statement not covered" >    data_xml += '&lt;/entry&gt;';</span>
+<span class="cstat-no" title="statement not covered" >    self.makeFeedRequest( ["list", ss_key, worksheet_id], 'POST', data_xml, cb );</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.getCells = <span class="fstat-no" title="function not covered" >function (worksheet_id, opts, cb) {</span></span>
+    // opts is optional
+<span class="cstat-no" title="statement not covered" >    if (typeof( opts ) == 'function') {</span>
+<span class="cstat-no" title="statement not covered" >      cb = opts;</span>
+<span class="cstat-no" title="statement not covered" >      opts = {};</span>
+    }
+&nbsp;
+    // Supported options are:
+    // min-row, max-row, min-col, max-col, return-empty
+<span class="cstat-no" title="statement not covered" >    var query = _.assign({}, opts);</span>
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    self.makeFeedRequest(["cells", ss_key, worksheet_id], 'GET', query, <span class="fstat-no" title="function not covered" >function (err, data, xml) {</span></span>
+<span class="cstat-no" title="statement not covered" >      if (err) <span class="cstat-no" title="statement not covered" >return cb(err);</span></span>
+<span class="cstat-no" title="statement not covered" >      if (data===true) {</span>
+<span class="cstat-no" title="statement not covered" >        return cb(new Error('No response to getCells call'))</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      var cells = [];</span>
+<span class="cstat-no" title="statement not covered" >      var entries = forceArray(data['entry']);</span>
+<span class="cstat-no" title="statement not covered" >      var i = 0;</span>
+<span class="cstat-no" title="statement not covered" >      entries.forEach(<span class="fstat-no" title="function not covered" >function( cell_data ){</span></span>
+<span class="cstat-no" title="statement not covered" >        cells.push( new SpreadsheetCell( self, worksheet_id, cell_data ) );</span>
+      });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      cb( null, cells );</span>
+    });
+  }
+};
+&nbsp;
+// Classes
+var SpreadsheetWorksheet = <span class="fstat-no" title="function not covered" >function( spreadsheet, data ){</span>
+<span class="cstat-no" title="statement not covered" >  var self = this;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  self.url = data.id;</span>
+<span class="cstat-no" title="statement not covered" >  self.id = data.id.substring( data.id.lastIndexOf("/") + 1 );</span>
+<span class="cstat-no" title="statement not covered" >  self.title = data.title;</span>
+<span class="cstat-no" title="statement not covered" >  self.rowCount = parseInt(data['gs:rowCount']);</span>
+<span class="cstat-no" title="statement not covered" >  self.colCount = parseInt(data['gs:colCount']);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  self['_links'] = [];</span>
+<span class="cstat-no" title="statement not covered" >  links = forceArray( data.link );</span>
+<span class="cstat-no" title="statement not covered" >  links.forEach( <span class="fstat-no" title="function not covered" >function( link ){</span></span>
+<span class="cstat-no" title="statement not covered" >    self['_links'][ link['$']['rel'] ] = link['$']['href'];</span>
+  });
+<span class="cstat-no" title="statement not covered" >  self['_links']['cells'] = self['_links']['http://schemas.google.com/spreadsheets/2006#cellsfeed'];</span>
+<span class="cstat-no" title="statement not covered" >  self['_links']['bulkcells'] = self['_links']['cells']+'/batch';</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function _setInfo(opts, cb) {</span>
+<span class="cstat-no" title="statement not covered" >    cb = cb || _.noop;</span>
+<span class="cstat-no" title="statement not covered" >    var xml = ''</span>
+      + '&lt;entry xmlns="http://www.w3.org/2005/Atom" xmlns:gs="http://schemas.google.com/spreadsheets/2006"&gt;'
+      + '&lt;title&gt;'+(opts.title || self.title)+'&lt;/title&gt;'
+      + '&lt;gs:rowCount&gt;'+(opts.rowCount || self.rowCount)+'&lt;/gs:rowCount&gt;'
+      + '&lt;gs:colCount&gt;'+(opts.colCount || self.colCount)+'&lt;/gs:colCount&gt;'
+      + '&lt;/entry&gt;';
+<span class="cstat-no" title="statement not covered" >    spreadsheet.makeFeedRequest(self['_links']['edit'], 'PUT', xml, <span class="fstat-no" title="function not covered" >function(err, response) {</span></span>
+<span class="cstat-no" title="statement not covered" >      if (err) <span class="cstat-no" title="statement not covered" >return cb(err);</span></span>
+<span class="cstat-no" title="statement not covered" >      self.title = response.title;</span>
+<span class="cstat-no" title="statement not covered" >      self.rowCount = parseInt(response['gs:rowCount']);</span>
+<span class="cstat-no" title="statement not covered" >      self.colCount = parseInt(response['gs:colCount']);</span>
+<span class="cstat-no" title="statement not covered" >      cb();</span>
+    });
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.resize = _setInfo;</span>
+<span class="cstat-no" title="statement not covered" >  this.setTitle = <span class="fstat-no" title="function not covered" >function(title, cb) {</span></span>
+<span class="cstat-no" title="statement not covered" >    _setInfo({title: title}, cb);</span>
+  }
+&nbsp;
+&nbsp;
+  // just a convenience method to clear the whole sheet
+  // resizes to 1 cell, clears the cell, and puts it back
+<span class="cstat-no" title="statement not covered" >  this.clear = <span class="fstat-no" title="function not covered" >function(cb) {</span></span>
+<span class="cstat-no" title="statement not covered" >    var cols = self.colCount;</span>
+<span class="cstat-no" title="statement not covered" >    var rows = self.colCount;</span>
+<span class="cstat-no" title="statement not covered" >    self.resize({rowCount: 1, colCount: 1}, <span class="fstat-no" title="function not covered" >function(err) {</span></span>
+<span class="cstat-no" title="statement not covered" >      if (err) <span class="cstat-no" title="statement not covered" >return cb(err);</span></span>
+<span class="cstat-no" title="statement not covered" >      self.getCells(<span class="fstat-no" title="function not covered" >function(err, cells) {</span></span>
+<span class="cstat-no" title="statement not covered" >        cells[0].setValue(null, <span class="fstat-no" title="function not covered" >function(err) {</span></span>
+<span class="cstat-no" title="statement not covered" >          if (err) <span class="cstat-no" title="statement not covered" >return cb(err);</span></span>
+<span class="cstat-no" title="statement not covered" >          self.resize({rowCount: rows, colCount: cols}, cb);</span>
+        });
+      })
+    });
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.getRows = <span class="fstat-no" title="function not covered" >function(opts, cb){</span></span>
+<span class="cstat-no" title="statement not covered" >    spreadsheet.getRows(self.id, opts, cb);</span>
+  }
+<span class="cstat-no" title="statement not covered" >  this.getCells = <span class="fstat-no" title="function not covered" >function(opts, cb) {</span></span>
+<span class="cstat-no" title="statement not covered" >    spreadsheet.getCells(self.id, opts, cb);</span>
+  }
+<span class="cstat-no" title="statement not covered" >  this.addRow = <span class="fstat-no" title="function not covered" >function(data, cb){</span></span>
+<span class="cstat-no" title="statement not covered" >    spreadsheet.addRow(self.id, data, cb);</span>
+  }
+<span class="cstat-no" title="statement not covered" >  this.bulkUpdateCells = <span class="fstat-no" title="function not covered" >function(cells, cb) {</span></span>
+<span class="cstat-no" title="statement not covered" >    var entries = cells.map(<span class="fstat-no" title="function not covered" >function (cell, i) {</span></span>
+<span class="cstat-no" title="statement not covered" >      cell._needsSave = false;</span>
+<span class="cstat-no" title="statement not covered" >      return "&lt;entry&gt;\n        &lt;batch:id&gt;" + cell.batchId + "&lt;/batch:id&gt;\n        &lt;batch:operation type=\"update\"/&gt;\n        &lt;id&gt;" + self['_links']['cells']+'/'+cell.batchId + "&lt;/id&gt;\n        &lt;link rel=\"edit\" type=\"application/atom+xml\"\n          href=\"" + cell._links.edit + "\"/&gt;\n        &lt;gs:cell row=\"" + cell.row + "\" col=\"" + cell.col + "\" inputValue=\"" + cell.valueForSave + "\"/&gt;\n      &lt;/entry&gt;";</span>
+    });
+<span class="cstat-no" title="statement not covered" >    var data_xml = "&lt;feed xmlns=\"http://www.w3.org/2005/Atom\"\n      xmlns:batch=\"http://schemas.google.com/gdata/batch\"\n      xmlns:gs=\"http://schemas.google.com/spreadsheets/2006\"&gt;\n      &lt;id&gt;" + self['_links']['cells'] + "&lt;/id&gt;\n      " + entries.join("\n") + "\n    &lt;/feed&gt;";</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    spreadsheet.makeFeedRequest(self['_links']['bulkcells'], 'POST', data_xml, <span class="fstat-no" title="function not covered" >function(err, data) {</span></span>
+<span class="cstat-no" title="statement not covered" >      if (err) <span class="cstat-no" title="statement not covered" >return cb(err);</span></span>
+&nbsp;
+      // update all the cells
+<span class="cstat-no" title="statement not covered" >      var cells_by_batch_id = _.indexBy(cells, 'batchId');</span>
+<span class="cstat-no" title="statement not covered" >      if (data.entry &amp;&amp; data.entry.length) <span class="cstat-no" title="statement not covered" >data.entry.forEach(<span class="fstat-no" title="function not covered" >function(cell_data) {</span></span></span>
+<span class="cstat-no" title="statement not covered" >        cells_by_batch_id[cell_data['batch:id']].updateValuesFromResponseData(cell_data);</span>
+      });
+<span class="cstat-no" title="statement not covered" >      cb();</span>
+    });
+  }
+<span class="cstat-no" title="statement not covered" >  this.del = <span class="fstat-no" title="function not covered" >function(cb){</span></span>
+<span class="cstat-no" title="statement not covered" >    spreadsheet.makeFeedRequest(self['_links']['edit'], 'DELETE', null, cb);</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.setHeaderRow = <span class="fstat-no" title="function not covered" >function(values, cb) {</span></span>
+<span class="cstat-no" title="statement not covered" >    if (!values) <span class="cstat-no" title="statement not covered" >return cb();</span></span>
+<span class="cstat-no" title="statement not covered" >    if (values.length &gt; self.colCount){</span>
+<span class="cstat-no" title="statement not covered" >      return cb(new Error('Sheet is not large enough to fit '+values.length+' columns. Resize the sheet first.'));</span>
+    }
+<span class="cstat-no" title="statement not covered" >    self.getCells({</span>
+      'min-row': 1,
+      'max-row': 1,
+      'min-col': 1,
+      'max-col': self.colCount,
+      'return-empty': true
+    }, <span class="fstat-no" title="function not covered" >function(err, cells) {</span>
+<span class="cstat-no" title="statement not covered" >      if (err) <span class="cstat-no" title="statement not covered" >return cb(err);</span></span>
+<span class="cstat-no" title="statement not covered" >      _.each(cells, <span class="fstat-no" title="function not covered" >function(cell) {</span></span>
+<span class="cstat-no" title="statement not covered" >        cell.value = values[cell.col-1] ? values[cell.col-1] : '';</span>
+      });
+<span class="cstat-no" title="statement not covered" >      self.bulkUpdateCells(cells, cb);</span>
+    });
+  }
+}
+&nbsp;
+var SpreadsheetRow = <span class="fstat-no" title="function not covered" >function( spreadsheet, data, xml ){</span>
+<span class="cstat-no" title="statement not covered" >  var self = this;</span>
+<span class="cstat-no" title="statement not covered" >  self['_xml'] = xml;</span>
+<span class="cstat-no" title="statement not covered" >  Object.keys(data).forEach(<span class="fstat-no" title="function not covered" >function(key) {</span></span>
+<span class="cstat-no" title="statement not covered" >    var val = data[key];</span>
+<span class="cstat-no" title="statement not covered" >    if(key.substring(0, 4) === "gsx:") {</span>
+<span class="cstat-no" title="statement not covered" >      if(typeof val === 'object' &amp;&amp; Object.keys(val).length === 0) {</span>
+<span class="cstat-no" title="statement not covered" >        val = null;</span>
+      }
+<span class="cstat-no" title="statement not covered" >      if (key == "gsx:") {</span>
+<span class="cstat-no" title="statement not covered" >        self[key.substring(0, 3)] = val;</span>
+      } else {
+<span class="cstat-no" title="statement not covered" >        self[key.substring(4)] = val;</span>
+      }
+    } else {
+<span class="cstat-no" title="statement not covered" >      if (key == "id") {</span>
+<span class="cstat-no" title="statement not covered" >        self[key] = val;</span>
+      } else <span class="cstat-no" title="statement not covered" >if (val['_']) {</span>
+<span class="cstat-no" title="statement not covered" >        self[key] = val['_'];</span>
+      } else <span class="cstat-no" title="statement not covered" >if ( key == 'link' ){</span>
+<span class="cstat-no" title="statement not covered" >        self['_links'] = [];</span>
+<span class="cstat-no" title="statement not covered" >        val = forceArray( val );</span>
+<span class="cstat-no" title="statement not covered" >        val.forEach( <span class="fstat-no" title="function not covered" >function( link ){</span></span>
+<span class="cstat-no" title="statement not covered" >          self['_links'][ link['$']['rel'] ] = link['$']['href'];</span>
+        });
+      }
+    }
+  }, this);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  self.save = <span class="fstat-no" title="function not covered" >function( cb ){</span></span>
+    /*
+    API for edits is very strict with the XML it accepts
+    So we just do a find replace on the original XML.
+    It's dumb, but I couldnt get any JSON-&gt;XML conversion to work reliably
+    */
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var data_xml = self['_xml'];</span>
+    // probably should make this part more robust?
+<span class="cstat-no" title="statement not covered" >    data_xml = data_xml.replace('&lt;entry&gt;', "&lt;entry xmlns='http://www.w3.org/2005/Atom' xmlns:gsx='http://schemas.google.com/spreadsheets/2006/extended'&gt;");</span>
+<span class="cstat-no" title="statement not covered" >      Object.keys( self ).forEach( <span class="fstat-no" title="function not covered" >function(key) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (key.substr(0,1) != '_' &amp;&amp; typeof( self[key] == 'string') ){</span>
+<span class="cstat-no" title="statement not covered" >          data_xml = data_xml.replace( new RegExp('&lt;gsx:'+xmlSafeColumnName(key)+"&gt;([\\s\\S]*?)&lt;/gsx:"+xmlSafeColumnName(key)+'&gt;'), '&lt;gsx:'+xmlSafeColumnName(key)+'&gt;'+ xmlSafeValue(self[key]) +'&lt;/gsx:'+xmlSafeColumnName(key)+'&gt;');</span>
+        }
+    });
+<span class="cstat-no" title="statement not covered" >    spreadsheet.makeFeedRequest( self['_links']['edit'], 'PUT', data_xml, cb );</span>
+  }
+<span class="cstat-no" title="statement not covered" >  self.del = <span class="fstat-no" title="function not covered" >function( cb ){</span></span>
+<span class="cstat-no" title="statement not covered" >    spreadsheet.makeFeedRequest( self['_links']['edit'], 'DELETE', null, cb );</span>
+  }
+}
+&nbsp;
+var SpreadsheetCell = <span class="fstat-no" title="function not covered" >function( spreadsheet, worksheet_id, data ){</span>
+<span class="cstat-no" title="statement not covered" >  var self = this;</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function init() {</span>
+<span class="cstat-no" title="statement not covered" >    self.id = data['id'];</span>
+<span class="cstat-no" title="statement not covered" >    self.row = parseInt(data['gs:cell']['$']['row']);</span>
+<span class="cstat-no" title="statement not covered" >    self.col = parseInt(data['gs:cell']['$']['col']);</span>
+<span class="cstat-no" title="statement not covered" >    self.batchId = 'R'+self.row+'C'+self.col;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    self['_links'] = [];</span>
+<span class="cstat-no" title="statement not covered" >    links = forceArray( data.link );</span>
+<span class="cstat-no" title="statement not covered" >    links.forEach( <span class="fstat-no" title="function not covered" >function( link ){</span></span>
+<span class="cstat-no" title="statement not covered" >      self['_links'][ link['$']['rel'] ] = link['$']['href'];</span>
+    });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    self.updateValuesFromResponseData(data);</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  self.updateValuesFromResponseData = <span class="fstat-no" title="function not covered" >function(_data) {</span></span>
+    // formula value
+<span class="cstat-no" title="statement not covered" >    var input_val = _data['gs:cell']['$']['inputValue'];</span>
+    // inputValue can be undefined so substr throws an error
+    // still unsure how this situation happens
+<span class="cstat-no" title="statement not covered" >    if (input_val &amp;&amp; input_val.substr(0,1) === '='){</span>
+<span class="cstat-no" title="statement not covered" >      self._formula = input_val;</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      self._formula = undefined;</span>
+    }
+&nbsp;
+    // numeric values
+<span class="cstat-no" title="statement not covered" >    if (_data['gs:cell']['$']['numericValue'] !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >      self._numericValue = parseFloat(_data['gs:cell']['$']['numericValue']);</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      self._numericValue = undefined;</span>
+    }
+&nbsp;
+    // the main "value" - its always a string
+<span class="cstat-no" title="statement not covered" >    self._value = _data['gs:cell']['_'] || '';</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  self.setValue = <span class="fstat-no" title="function not covered" >function(new_value, cb) {</span></span>
+<span class="cstat-no" title="statement not covered" >    self.value = new_value;</span>
+<span class="cstat-no" title="statement not covered" >    self.save(cb);</span>
+  };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  self._clearValue = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >    self._formula = undefined;</span>
+<span class="cstat-no" title="statement not covered" >    self._numericValue = undefined;</span>
+<span class="cstat-no" title="statement not covered" >    self._value = '';</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  self.__defineGetter__('value', <span class="fstat-no" title="function not covered" >function(){</span></span>
+<span class="cstat-no" title="statement not covered" >    return self._value;</span>
+  });
+<span class="cstat-no" title="statement not covered" >  self.__defineSetter__('value', <span class="fstat-no" title="function not covered" >function(val){</span></span>
+<span class="cstat-no" title="statement not covered" >    if (!val) <span class="cstat-no" title="statement not covered" >return self._clearValue();</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var numeric_val = parseFloat(val);</span>
+<span class="cstat-no" title="statement not covered" >    if (!isNaN(numeric_val)){</span>
+<span class="cstat-no" title="statement not covered" >      self._numericValue = numeric_val;</span>
+<span class="cstat-no" title="statement not covered" >      self._value = val.toString();</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      self._numericValue = undefined;</span>
+<span class="cstat-no" title="statement not covered" >      self._value = val;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (typeof val == 'string' &amp;&amp; val.substr(0,1) === '=') {</span>
+      // use the getter to clear the value
+<span class="cstat-no" title="statement not covered" >      self.formula = val;</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      self._formula = undefined;</span>
+    }
+  });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  self.__defineGetter__('formula', <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >    return self._formula;</span>
+  });
+<span class="cstat-no" title="statement not covered" >  self.__defineSetter__('formula', <span class="fstat-no" title="function not covered" >function(val){</span></span>
+<span class="cstat-no" title="statement not covered" >    if (!val) <span class="cstat-no" title="statement not covered" >return self._clearValue();</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (val.substr(0,1) !== '=') {</span>
+<span class="cstat-no" title="statement not covered" >      throw new Error('Formulas must start with "="');</span>
+    }
+<span class="cstat-no" title="statement not covered" >    self._numericValue = undefined;</span>
+<span class="cstat-no" title="statement not covered" >    self._value = '*SAVE TO GET NEW VALUE*';</span>
+<span class="cstat-no" title="statement not covered" >    self._formula = val;</span>
+  });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  self.__defineGetter__('numericValue', <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >    return self._numericValue;</span>
+  });
+<span class="cstat-no" title="statement not covered" >  self.__defineSetter__('numericValue', <span class="fstat-no" title="function not covered" >function(val) {</span></span>
+<span class="cstat-no" title="statement not covered" >    if (val === undefined || val === null) <span class="cstat-no" title="statement not covered" >return self._clearValue();</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (isNaN(parseFloat(val)) || !isFinite(val)) {</span>
+<span class="cstat-no" title="statement not covered" >      throw new Error('Invalid numeric value assignment');</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    self._value = val.toString();</span>
+<span class="cstat-no" title="statement not covered" >    self._numericValue = parseFloat(val);</span>
+<span class="cstat-no" title="statement not covered" >    self._formula = undefined;</span>
+  });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  self.__defineGetter__('valueForSave', <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >    return xmlSafeValue(self._formula || self._value);</span>
+  });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  self.save = <span class="fstat-no" title="function not covered" >function(cb) {</span></span>
+<span class="cstat-no" title="statement not covered" >    self._needsSave = false;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var edit_id = 'https://spreadsheets.google.com/feeds/cells/key/worksheetId/private/full/R'+self.row+'C'+self.col;</span>
+<span class="cstat-no" title="statement not covered" >    var data_xml =</span>
+      '&lt;entry&gt;&lt;id&gt;'+self.id+'&lt;/id&gt;'+
+      '&lt;link rel="edit" type="application/atom+xml" href="'+self.id+'"/&gt;'+
+      '&lt;gs:cell row="'+self.row+'" col="'+self.col+'" inputValue="'+self.valueForSave+'"/&gt;&lt;/entry&gt;'
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    data_xml = data_xml.replace('&lt;entry&gt;', "&lt;entry xmlns='http://www.w3.org/2005/Atom' xmlns:gs='http://schemas.google.com/spreadsheets/2006'&gt;");</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    spreadsheet.makeFeedRequest( self['_links']['edit'], 'PUT', data_xml, <span class="fstat-no" title="function not covered" >function(err, response) {</span></span>
+<span class="cstat-no" title="statement not covered" >      if (err) <span class="cstat-no" title="statement not covered" >return cb(err);</span></span>
+<span class="cstat-no" title="statement not covered" >      self.updateValuesFromResponseData(response);</span>
+<span class="cstat-no" title="statement not covered" >      cb();</span>
+    });
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  self.del = <span class="fstat-no" title="function not covered" >function(cb) {</span></span>
+<span class="cstat-no" title="statement not covered" >    self.setValue('', cb);</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  init();</span>
+<span class="cstat-no" title="statement not covered" >  return self;</span>
+}
+&nbsp;
+module.exports = GoogleSpreadsheet;
+&nbsp;
+//utils
+var forceArray = <span class="fstat-no" title="function not covered" >function(val) {</span>
+<span class="cstat-no" title="statement not covered" >  if ( Array.isArray( val ) ) <span class="cstat-no" title="statement not covered" >return val;</span></span>
+<span class="cstat-no" title="statement not covered" >  if ( !val ) <span class="cstat-no" title="statement not covered" >return [];</span></span>
+<span class="cstat-no" title="statement not covered" >  return [ val ];</span>
+}
+var xmlSafeValue = <span class="fstat-no" title="function not covered" >function(val){</span>
+<span class="cstat-no" title="statement not covered" >  if ( val == null ) <span class="cstat-no" title="statement not covered" >return '';</span></span>
+<span class="cstat-no" title="statement not covered" >  return String(val).replace(/&amp;/g, '&amp;amp;')</span>
+      .replace(/&lt;/g, '&amp;lt;')
+      .replace(/&gt;/g, '&amp;gt;')
+      .replace(/"/g, '&amp;quot;');
+}
+var xmlSafeColumnName = <span class="fstat-no" title="function not covered" >function(val){</span>
+<span class="cstat-no" title="statement not covered" >  if (!val) <span class="cstat-no" title="statement not covered" >return '';</span></span>
+<span class="cstat-no" title="statement not covered" >  return String(val).replace(/[\s_]+/g, '')</span>
+      .toLowerCase();
+}
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 11 2017 16:55:52 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
