@@ -1,7 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <title>Code coverage report for node-npmtest-google-spreadsheet/google-spreadsheet/index.js</title>
+<html lang="en"><head>
+    <title>Code coverage report for node-npmtest-google-spreadsheet/node_modules/google-spreadsheet/index.js</title>
     <meta charset="utf-8">
     <style>
         body, html {
@@ -194,7 +192,7 @@
     <h1 style="font-weight: bold;">
         <a href="https://github.com/npmtest/node-npmtest-google-spreadsheet">npmtest-google-spreadsheet (v0.0.1)</a>
     </h1>
-    <h1>Code coverage report for <span class="entity">node-npmtest-google-spreadsheet/google-spreadsheet/index.js</span></h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-google-spreadsheet/node_modules/google-spreadsheet/index.js</span></h1>
     <h2>
         
         Statements: <span class="metric">5.67% <small>(22 / 388)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -210,11 +208,11 @@
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-google-spreadsheet/google-spreadsheet/</a> &#187; index.js</div>
+    <div class="path"><a href="../../../index.html">All files</a> » <a href="index.html">node-npmtest-google-spreadsheet/node_modules/google-spreadsheet/</a> » index.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
-<tr><td class="line-count">1
+<tbody><tr><td class="line-count">1
 2
 3
 4
@@ -1557,161 +1555,161 @@ var REQUIRE_AUTH_MESSAGE = 'You must authenticate to modify sheet data';
 &nbsp;
 // The main class that represents a single sheet
 // this is the main module.exports
-var GoogleSpreadsheet = <span class="fstat-no" title="function not covered" >function( ss_key, auth_id, options ){</span>
-<span class="cstat-no" title="statement not covered" >  var self = this;</span>
-<span class="cstat-no" title="statement not covered" >  var google_auth = null;</span>
-<span class="cstat-no" title="statement not covered" >  var visibility = 'public';</span>
-<span class="cstat-no" title="statement not covered" >  var projection = 'values';</span>
+var GoogleSpreadsheet = <span class="fstat-no" title="function not covered">function( ss_key, auth_id, options ){</span>
+<span class="cstat-no" title="statement not covered">  var self = this;</span>
+<span class="cstat-no" title="statement not covered">  var google_auth = null;</span>
+<span class="cstat-no" title="statement not covered">  var visibility = 'public';</span>
+<span class="cstat-no" title="statement not covered">  var projection = 'values';</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  var auth_mode = 'anonymous';</span>
+<span class="cstat-no" title="statement not covered">  var auth_mode = 'anonymous';</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  var auth_client = new GoogleAuth();</span>
-<span class="cstat-no" title="statement not covered" >  var jwt_client;</span>
+<span class="cstat-no" title="statement not covered">  var auth_client = new GoogleAuth();</span>
+<span class="cstat-no" title="statement not covered">  var jwt_client;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  options = options || {};</span>
+<span class="cstat-no" title="statement not covered">  options = options || {};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  var xml_parser = new xml2js.Parser({</span>
+<span class="cstat-no" title="statement not covered">  var xml_parser = new xml2js.Parser({</span>
     // options carried over from older version of xml2js
     // might want to update how the code works, but for now this is fine
     explicitArray: false,
     explicitRoot: false
   });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if ( !ss_key ) {</span>
-<span class="cstat-no" title="statement not covered" >    throw new Error("Spreadsheet key not provided.");</span>
+<span class="cstat-no" title="statement not covered">  if ( !ss_key ) {</span>
+<span class="cstat-no" title="statement not covered">    throw new Error("Spreadsheet key not provided.");</span>
   }
 &nbsp;
   // auth_id may be null
-<span class="cstat-no" title="statement not covered" >  setAuthAndDependencies(auth_id);</span>
+<span class="cstat-no" title="statement not covered">  setAuthAndDependencies(auth_id);</span>
 &nbsp;
   // Authentication Methods
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  this.setAuthToken = <span class="fstat-no" title="function not covered" >function( auth_id ) {</span></span>
-<span class="cstat-no" title="statement not covered" >    if (auth_mode == 'anonymous') <span class="cstat-no" title="statement not covered" >auth_mode = 'token';</span></span>
-<span class="cstat-no" title="statement not covered" >    setAuthAndDependencies(auth_id);</span>
+<span class="cstat-no" title="statement not covered">  this.setAuthToken = <span class="fstat-no" title="function not covered">function( auth_id ) {</span></span>
+<span class="cstat-no" title="statement not covered">    if (auth_mode == 'anonymous') <span class="cstat-no" title="statement not covered">auth_mode = 'token';</span></span>
+<span class="cstat-no" title="statement not covered">    setAuthAndDependencies(auth_id);</span>
   }
 &nbsp;
   // deprecated username/password login method
   // leaving it here to help notify users why it doesn't work
-<span class="cstat-no" title="statement not covered" >  this.setAuth = <span class="fstat-no" title="function not covered" >function( username, password, cb ){</span></span>
-<span class="cstat-no" title="statement not covered" >    return cb(new Error('Google has officially deprecated ClientLogin. Please upgrade this module and see the readme for more instrucations'))</span>
+<span class="cstat-no" title="statement not covered">  this.setAuth = <span class="fstat-no" title="function not covered">function( username, password, cb ){</span></span>
+<span class="cstat-no" title="statement not covered">    return cb(new Error('Google has officially deprecated ClientLogin. Please upgrade this module and see the readme for more instrucations'))</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  this.useServiceAccountAuth = <span class="fstat-no" title="function not covered" >function( creds, cb ){</span></span>
-<span class="cstat-no" title="statement not covered" >    if (typeof creds == 'string') {</span>
-<span class="cstat-no" title="statement not covered" >      try {</span>
-<span class="cstat-no" title="statement not covered" >        creds = require(creds);</span>
+<span class="cstat-no" title="statement not covered">  this.useServiceAccountAuth = <span class="fstat-no" title="function not covered">function( creds, cb ){</span></span>
+<span class="cstat-no" title="statement not covered">    if (typeof creds == 'string') {</span>
+<span class="cstat-no" title="statement not covered">      try {</span>
+<span class="cstat-no" title="statement not covered">        creds = require(creds);</span>
       } catch (err) {
-<span class="cstat-no" title="statement not covered" >        return cb(err);</span>
+<span class="cstat-no" title="statement not covered">        return cb(err);</span>
       }
     }
-<span class="cstat-no" title="statement not covered" >    jwt_client = new auth_client.JWT(creds.client_email, null, creds.private_key, GOOGLE_AUTH_SCOPE, null);</span>
-<span class="cstat-no" title="statement not covered" >    renewJwtAuth(cb);</span>
+<span class="cstat-no" title="statement not covered">    jwt_client = new auth_client.JWT(creds.client_email, null, creds.private_key, GOOGLE_AUTH_SCOPE, null);</span>
+<span class="cstat-no" title="statement not covered">    renewJwtAuth(cb);</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  function renewJwtAuth(cb) {</span>
-<span class="cstat-no" title="statement not covered" >    auth_mode = 'jwt';</span>
-<span class="cstat-no" title="statement not covered" >    jwt_client.authorize(<span class="fstat-no" title="function not covered" >function (err, token) {</span></span>
-<span class="cstat-no" title="statement not covered" >      if (err) <span class="cstat-no" title="statement not covered" >return cb(err);</span></span>
-<span class="cstat-no" title="statement not covered" >      self.setAuthToken({</span>
+<span class="fstat-no" title="function not covered">  function renewJwtAuth(cb) {</span>
+<span class="cstat-no" title="statement not covered">    auth_mode = 'jwt';</span>
+<span class="cstat-no" title="statement not covered">    jwt_client.authorize(<span class="fstat-no" title="function not covered">function (err, token) {</span></span>
+<span class="cstat-no" title="statement not covered">      if (err) <span class="cstat-no" title="statement not covered">return cb(err);</span></span>
+<span class="cstat-no" title="statement not covered">      self.setAuthToken({</span>
         type: token.token_type,
         value: token.access_token,
         expires: token.expiry_date
       });
-<span class="cstat-no" title="statement not covered" >      cb()</span>
+<span class="cstat-no" title="statement not covered">      cb()</span>
     });
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  this.isAuthActive = <span class="fstat-no" title="function not covered" >function() {</span></span>
-<span class="cstat-no" title="statement not covered" >    return !!google_auth;</span>
+<span class="cstat-no" title="statement not covered">  this.isAuthActive = <span class="fstat-no" title="function not covered">function() {</span></span>
+<span class="cstat-no" title="statement not covered">    return !!google_auth;</span>
   }
 &nbsp;
 &nbsp;
-<span class="fstat-no" title="function not covered" >  function setAuthAndDependencies( auth ) {</span>
-<span class="cstat-no" title="statement not covered" >    google_auth = auth;</span>
-<span class="cstat-no" title="statement not covered" >    if (!options.visibility){</span>
-<span class="cstat-no" title="statement not covered" >      visibility = google_auth ? 'private' : 'public';</span>
+<span class="fstat-no" title="function not covered">  function setAuthAndDependencies( auth ) {</span>
+<span class="cstat-no" title="statement not covered">    google_auth = auth;</span>
+<span class="cstat-no" title="statement not covered">    if (!options.visibility){</span>
+<span class="cstat-no" title="statement not covered">      visibility = google_auth ? 'private' : 'public';</span>
     }
-<span class="cstat-no" title="statement not covered" >    if (!options.projection){</span>
-<span class="cstat-no" title="statement not covered" >      projection = google_auth ? 'full' : 'values';</span>
+<span class="cstat-no" title="statement not covered">    if (!options.projection){</span>
+<span class="cstat-no" title="statement not covered">      projection = google_auth ? 'full' : 'values';</span>
     }
   }
 &nbsp;
   // This method is used internally to make all requests
-<span class="cstat-no" title="statement not covered" >  this.makeFeedRequest = <span class="fstat-no" title="function not covered" >function( url_params, method, query_or_data, cb ){</span></span>
-<span class="cstat-no" title="statement not covered" >    var url;</span>
-<span class="cstat-no" title="statement not covered" >    var headers = {};</span>
-<span class="cstat-no" title="statement not covered" >    if (!cb ) <span class="cstat-no" title="statement not covered" >cb = <span class="fstat-no" title="function not covered" >function(){</span>};</span></span>
-<span class="cstat-no" title="statement not covered" >    if ( typeof(url_params) == 'string' ) {</span>
+<span class="cstat-no" title="statement not covered">  this.makeFeedRequest = <span class="fstat-no" title="function not covered">function( url_params, method, query_or_data, cb ){</span></span>
+<span class="cstat-no" title="statement not covered">    var url;</span>
+<span class="cstat-no" title="statement not covered">    var headers = {};</span>
+<span class="cstat-no" title="statement not covered">    if (!cb ) <span class="cstat-no" title="statement not covered">cb = <span class="fstat-no" title="function not covered">function(){</span>};</span></span>
+<span class="cstat-no" title="statement not covered">    if ( typeof(url_params) == 'string' ) {</span>
       // used for edit / delete requests
-<span class="cstat-no" title="statement not covered" >      url = url_params;</span>
-    } else <span class="cstat-no" title="statement not covered" >if ( Array.isArray( url_params )){</span>
+<span class="cstat-no" title="statement not covered">      url = url_params;</span>
+    } else <span class="cstat-no" title="statement not covered">if ( Array.isArray( url_params )){</span>
       //used for get and post requets
-<span class="cstat-no" title="statement not covered" >      url_params.push( visibility, projection );</span>
-<span class="cstat-no" title="statement not covered" >      url = GOOGLE_FEED_URL + url_params.join("/");</span>
+<span class="cstat-no" title="statement not covered">      url_params.push( visibility, projection );</span>
+<span class="cstat-no" title="statement not covered">      url = GOOGLE_FEED_URL + url_params.join("/");</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    async.series({</span>
-      auth: <span class="fstat-no" title="function not covered" >function(step) {</span>
-<span class="cstat-no" title="statement not covered" >        if (auth_mode != 'jwt') <span class="cstat-no" title="statement not covered" >return step();</span></span>
+<span class="cstat-no" title="statement not covered">    async.series({</span>
+      auth: <span class="fstat-no" title="function not covered">function(step) {</span>
+<span class="cstat-no" title="statement not covered">        if (auth_mode != 'jwt') <span class="cstat-no" title="statement not covered">return step();</span></span>
         // check if jwt token is expired
-<span class="cstat-no" title="statement not covered" >        if (google_auth.expires &gt; +new Date()) <span class="cstat-no" title="statement not covered" >return step();</span></span>
-<span class="cstat-no" title="statement not covered" >        renewJwtAuth(step);</span>
+<span class="cstat-no" title="statement not covered">        if (google_auth.expires &gt; +new Date()) <span class="cstat-no" title="statement not covered">return step();</span></span>
+<span class="cstat-no" title="statement not covered">        renewJwtAuth(step);</span>
       },
-      request: <span class="fstat-no" title="function not covered" >function(result, step) {</span>
-<span class="cstat-no" title="statement not covered" >        if ( google_auth ) {</span>
-<span class="cstat-no" title="statement not covered" >          if (google_auth.type === 'Bearer') {</span>
-<span class="cstat-no" title="statement not covered" >            headers['Authorization'] = 'Bearer ' + google_auth.value;</span>
+      request: <span class="fstat-no" title="function not covered">function(result, step) {</span>
+<span class="cstat-no" title="statement not covered">        if ( google_auth ) {</span>
+<span class="cstat-no" title="statement not covered">          if (google_auth.type === 'Bearer') {</span>
+<span class="cstat-no" title="statement not covered">            headers['Authorization'] = 'Bearer ' + google_auth.value;</span>
           } else {
-<span class="cstat-no" title="statement not covered" >            headers['Authorization'] = "GoogleLogin auth=" + google_auth;</span>
+<span class="cstat-no" title="statement not covered">            headers['Authorization'] = "GoogleLogin auth=" + google_auth;</span>
           }
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        headers['Gdata-Version'] = '3.0';</span>
+<span class="cstat-no" title="statement not covered">        headers['Gdata-Version'] = '3.0';</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        if ( method == 'POST' || method == 'PUT' ) {</span>
-<span class="cstat-no" title="statement not covered" >          headers['content-type'] = 'application/atom+xml';</span>
+<span class="cstat-no" title="statement not covered">        if ( method == 'POST' || method == 'PUT' ) {</span>
+<span class="cstat-no" title="statement not covered">          headers['content-type'] = 'application/atom+xml';</span>
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        if (method == 'PUT' || method == 'POST' &amp;&amp; url.indexOf('/batch') != -1) {</span>
-<span class="cstat-no" title="statement not covered" >          headers['If-Match'] = '*';</span>
+<span class="cstat-no" title="statement not covered">        if (method == 'PUT' || method == 'POST' &amp;&amp; url.indexOf('/batch') != -1) {</span>
+<span class="cstat-no" title="statement not covered">          headers['If-Match'] = '*';</span>
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        if ( method == 'GET' &amp;&amp; query_or_data ) {</span>
-<span class="cstat-no" title="statement not covered" >          var query = "?" + querystring.stringify( query_or_data );</span>
+<span class="cstat-no" title="statement not covered">        if ( method == 'GET' &amp;&amp; query_or_data ) {</span>
+<span class="cstat-no" title="statement not covered">          var query = "?" + querystring.stringify( query_or_data );</span>
           // replacements are needed for using structured queries on getRows
-<span class="cstat-no" title="statement not covered" >          query = query.replace(/%3E/g,'&gt;');</span>
-<span class="cstat-no" title="statement not covered" >          query = query.replace(/%3D/g,'=');</span>
-<span class="cstat-no" title="statement not covered" >          query = query.replace(/%3C/g,'&lt;');</span>
-<span class="cstat-no" title="statement not covered" >          url += query;</span>
+<span class="cstat-no" title="statement not covered">          query = query.replace(/%3E/g,'&gt;');</span>
+<span class="cstat-no" title="statement not covered">          query = query.replace(/%3D/g,'=');</span>
+<span class="cstat-no" title="statement not covered">          query = query.replace(/%3C/g,'&lt;');</span>
+<span class="cstat-no" title="statement not covered">          url += query;</span>
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        request( {</span>
+<span class="cstat-no" title="statement not covered">        request( {</span>
           url: url,
           method: method,
           headers: headers,
           body: method == 'POST' || method == 'PUT' ? query_or_data : null
-        }, <span class="fstat-no" title="function not covered" >function(err, response, body){</span>
-<span class="cstat-no" title="statement not covered" >          if (err) {</span>
-<span class="cstat-no" title="statement not covered" >            return cb( err );</span>
-          } else <span class="cstat-no" title="statement not covered" >if( response.statusCode === 401 ) {</span>
-<span class="cstat-no" title="statement not covered" >            return cb( new Error("Invalid authorization key."));</span>
-          } else <span class="cstat-no" title="statement not covered" >if ( response.statusCode &gt;= 400 ) {</span>
-<span class="cstat-no" title="statement not covered" >            var message = _.isObject(body) ? JSON.stringify(body) : body.replace(/&amp;quot;/g, '"');</span>
-<span class="cstat-no" title="statement not covered" >            return cb( new Error("HTTP error "+response.statusCode+" ("+http.STATUS_CODES[response.statusCode])+") - "+message);</span>
-          } else <span class="cstat-no" title="statement not covered" >if ( response.statusCode === 200 &amp;&amp; response.headers['content-type'].indexOf('text/html') &gt;= 0 ) {</span>
-<span class="cstat-no" title="statement not covered" >            return cb( new Error("Sheet is private. Use authentication or make public. (see https://github.com/theoephraim/node-google-spreadsheet#a-note-on-authentication for details)"));</span>
+        }, <span class="fstat-no" title="function not covered">function(err, response, body){</span>
+<span class="cstat-no" title="statement not covered">          if (err) {</span>
+<span class="cstat-no" title="statement not covered">            return cb( err );</span>
+          } else <span class="cstat-no" title="statement not covered">if( response.statusCode === 401 ) {</span>
+<span class="cstat-no" title="statement not covered">            return cb( new Error("Invalid authorization key."));</span>
+          } else <span class="cstat-no" title="statement not covered">if ( response.statusCode &gt;= 400 ) {</span>
+<span class="cstat-no" title="statement not covered">            var message = _.isObject(body) ? JSON.stringify(body) : body.replace(/&amp;quot;/g, '"');</span>
+<span class="cstat-no" title="statement not covered">            return cb( new Error("HTTP error "+response.statusCode+" ("+http.STATUS_CODES[response.statusCode])+") - "+message);</span>
+          } else <span class="cstat-no" title="statement not covered">if ( response.statusCode === 200 &amp;&amp; response.headers['content-type'].indexOf('text/html') &gt;= 0 ) {</span>
+<span class="cstat-no" title="statement not covered">            return cb( new Error("Sheet is private. Use authentication or make public. (see https://github.com/theoephraim/node-google-spreadsheet#a-note-on-authentication for details)"));</span>
           }
 &nbsp;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >          if ( body ){</span>
-<span class="cstat-no" title="statement not covered" >            xml_parser.parseString(body, <span class="fstat-no" title="function not covered" >function(err, result){</span></span>
-<span class="cstat-no" title="statement not covered" >              if ( err ) <span class="cstat-no" title="statement not covered" >return cb( err );</span></span>
-<span class="cstat-no" title="statement not covered" >              cb( null, result, body );</span>
+<span class="cstat-no" title="statement not covered">          if ( body ){</span>
+<span class="cstat-no" title="statement not covered">            xml_parser.parseString(body, <span class="fstat-no" title="function not covered">function(err, result){</span></span>
+<span class="cstat-no" title="statement not covered">              if ( err ) <span class="cstat-no" title="statement not covered">return cb( err );</span></span>
+<span class="cstat-no" title="statement not covered">              cb( null, result, body );</span>
             });
           } else {
-<span class="cstat-no" title="statement not covered" >            if ( err ) <span class="cstat-no" title="statement not covered" >cb( err );</span></span>
-            else <span class="cstat-no" title="statement not covered" >cb( null, true );</span>
+<span class="cstat-no" title="statement not covered">            if ( err ) <span class="cstat-no" title="statement not covered">cb( err );</span></span>
+            else <span class="cstat-no" title="statement not covered">cb( null, true );</span>
           }
         })
       }
@@ -1721,56 +1719,56 @@ var GoogleSpreadsheet = <span class="fstat-no" title="function not covered" >fun
 &nbsp;
 &nbsp;
   // public API methods
-<span class="cstat-no" title="statement not covered" >  this.getInfo = <span class="fstat-no" title="function not covered" >function( cb ){</span></span>
-<span class="cstat-no" title="statement not covered" >    self.makeFeedRequest( ["worksheets", ss_key], 'GET', null, <span class="fstat-no" title="function not covered" >function(err, data, xml) {</span></span>
-<span class="cstat-no" title="statement not covered" >      if ( err ) <span class="cstat-no" title="statement not covered" >return cb( err );</span></span>
-<span class="cstat-no" title="statement not covered" >      if (data===true) {</span>
-<span class="cstat-no" title="statement not covered" >        return cb(new Error('No response to getInfo call'))</span>
+<span class="cstat-no" title="statement not covered">  this.getInfo = <span class="fstat-no" title="function not covered">function( cb ){</span></span>
+<span class="cstat-no" title="statement not covered">    self.makeFeedRequest( ["worksheets", ss_key], 'GET', null, <span class="fstat-no" title="function not covered">function(err, data, xml) {</span></span>
+<span class="cstat-no" title="statement not covered">      if ( err ) <span class="cstat-no" title="statement not covered">return cb( err );</span></span>
+<span class="cstat-no" title="statement not covered">      if (data===true) {</span>
+<span class="cstat-no" title="statement not covered">        return cb(new Error('No response to getInfo call'))</span>
       }
-<span class="cstat-no" title="statement not covered" >      var ss_data = {</span>
+<span class="cstat-no" title="statement not covered">      var ss_data = {</span>
         id: data.id,
         title: data.title,
         updated: data.updated,
         author: data.author,
         worksheets: []
       }
-<span class="cstat-no" title="statement not covered" >      var worksheets = forceArray(data.entry);</span>
-<span class="cstat-no" title="statement not covered" >      worksheets.forEach( <span class="fstat-no" title="function not covered" >function( ws_data ) {</span></span>
-<span class="cstat-no" title="statement not covered" >        ss_data.worksheets.push( new SpreadsheetWorksheet( self, ws_data ) );</span>
+<span class="cstat-no" title="statement not covered">      var worksheets = forceArray(data.entry);</span>
+<span class="cstat-no" title="statement not covered">      worksheets.forEach( <span class="fstat-no" title="function not covered">function( ws_data ) {</span></span>
+<span class="cstat-no" title="statement not covered">        ss_data.worksheets.push( new SpreadsheetWorksheet( self, ws_data ) );</span>
       });
-<span class="cstat-no" title="statement not covered" >      self.info = ss_data;</span>
-<span class="cstat-no" title="statement not covered" >      self.worksheets = ss_data.worksheets;</span>
-<span class="cstat-no" title="statement not covered" >      cb( null, ss_data );</span>
+<span class="cstat-no" title="statement not covered">      self.info = ss_data;</span>
+<span class="cstat-no" title="statement not covered">      self.worksheets = ss_data.worksheets;</span>
+<span class="cstat-no" title="statement not covered">      cb( null, ss_data );</span>
     });
   }
 &nbsp;
   // NOTE: worksheet IDs start at 1
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  this.addWorksheet = <span class="fstat-no" title="function not covered" >function( opts, cb ) {</span></span>
+<span class="cstat-no" title="statement not covered">  this.addWorksheet = <span class="fstat-no" title="function not covered">function( opts, cb ) {</span></span>
     // make opts optional
-<span class="cstat-no" title="statement not covered" >    if (typeof opts == 'function'){</span>
-<span class="cstat-no" title="statement not covered" >      cb = opts;</span>
-<span class="cstat-no" title="statement not covered" >      opts = {};</span>
+<span class="cstat-no" title="statement not covered">    if (typeof opts == 'function'){</span>
+<span class="cstat-no" title="statement not covered">      cb = opts;</span>
+<span class="cstat-no" title="statement not covered">      opts = {};</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    cb = cb || _.noop;</span>
+<span class="cstat-no" title="statement not covered">    cb = cb || _.noop;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (!this.isAuthActive()) <span class="cstat-no" title="statement not covered" >return cb(new Error(REQUIRE_AUTH_MESSAGE));</span></span>
+<span class="cstat-no" title="statement not covered">    if (!this.isAuthActive()) <span class="cstat-no" title="statement not covered">return cb(new Error(REQUIRE_AUTH_MESSAGE));</span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    var defaults = {</span>
+<span class="cstat-no" title="statement not covered">    var defaults = {</span>
       title: 'Worksheet '+(+new Date()),  // need a unique title
       rowCount: 50,
       colCount: 20
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    var opts = _.extend({}, defaults, opts);</span>
+<span class="cstat-no" title="statement not covered">    var opts = _.extend({}, defaults, opts);</span>
 &nbsp;
     // if column headers are set, make sure the sheet is big enough for them
-<span class="cstat-no" title="statement not covered" >    if (opts.headers &amp;&amp; opts.headers.length &gt; opts.colCount) {</span>
-<span class="cstat-no" title="statement not covered" >      opts.colCount = opts.headers.length;</span>
+<span class="cstat-no" title="statement not covered">    if (opts.headers &amp;&amp; opts.headers.length &gt; opts.colCount) {</span>
+<span class="cstat-no" title="statement not covered">      opts.colCount = opts.headers.length;</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    var data_xml = '&lt;entry xmlns="http://www.w3.org/2005/Atom" xmlns:gs="http://schemas.google.com/spreadsheets/2006"&gt;&lt;title&gt;' +</span>
+<span class="cstat-no" title="statement not covered">    var data_xml = '&lt;entry xmlns="http://www.w3.org/2005/Atom" xmlns:gs="http://schemas.google.com/spreadsheets/2006"&gt;&lt;title&gt;' +</span>
         opts.title +
       '&lt;/title&gt;&lt;gs:rowCount&gt;' +
         opts.rowCount +
@@ -1778,428 +1776,428 @@ var GoogleSpreadsheet = <span class="fstat-no" title="function not covered" >fun
         opts.colCount +
       '&lt;/gs:colCount&gt;&lt;/entry&gt;';
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    self.makeFeedRequest( ["worksheets", ss_key], 'POST', data_xml, <span class="fstat-no" title="function not covered" >function(err, data, xml) {</span></span>
-<span class="cstat-no" title="statement not covered" >      if ( err ) <span class="cstat-no" title="statement not covered" >return cb( err );</span></span>
+<span class="cstat-no" title="statement not covered">    self.makeFeedRequest( ["worksheets", ss_key], 'POST', data_xml, <span class="fstat-no" title="function not covered">function(err, data, xml) {</span></span>
+<span class="cstat-no" title="statement not covered">      if ( err ) <span class="cstat-no" title="statement not covered">return cb( err );</span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      var sheet = new SpreadsheetWorksheet( self, data );</span>
-<span class="cstat-no" title="statement not covered" >      self.worksheets = self.worksheets || [];</span>
-<span class="cstat-no" title="statement not covered" >      self.worksheets.push(sheet);</span>
-<span class="cstat-no" title="statement not covered" >      sheet.setHeaderRow(opts.headers, <span class="fstat-no" title="function not covered" >function(err) {</span></span>
-<span class="cstat-no" title="statement not covered" >        cb(err, sheet);</span>
+<span class="cstat-no" title="statement not covered">      var sheet = new SpreadsheetWorksheet( self, data );</span>
+<span class="cstat-no" title="statement not covered">      self.worksheets = self.worksheets || [];</span>
+<span class="cstat-no" title="statement not covered">      self.worksheets.push(sheet);</span>
+<span class="cstat-no" title="statement not covered">      sheet.setHeaderRow(opts.headers, <span class="fstat-no" title="function not covered">function(err) {</span></span>
+<span class="cstat-no" title="statement not covered">        cb(err, sheet);</span>
       })
     });
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  this.removeWorksheet = <span class="fstat-no" title="function not covered" >function ( worksheet_id, cb ){</span></span>
-<span class="cstat-no" title="statement not covered" >    if (!this.isAuthActive()) <span class="cstat-no" title="statement not covered" >return cb(new Error(REQUIRE_AUTH_MESSAGE));</span></span>
-<span class="cstat-no" title="statement not covered" >    self.makeFeedRequest( ["worksheets", ss_key, worksheet_id], 'DELETE', cb );</span>
+<span class="cstat-no" title="statement not covered">  this.removeWorksheet = <span class="fstat-no" title="function not covered">function ( worksheet_id, cb ){</span></span>
+<span class="cstat-no" title="statement not covered">    if (!this.isAuthActive()) <span class="cstat-no" title="statement not covered">return cb(new Error(REQUIRE_AUTH_MESSAGE));</span></span>
+<span class="cstat-no" title="statement not covered">    self.makeFeedRequest( ["worksheets", ss_key, worksheet_id], 'DELETE', cb );</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  this.getRows = <span class="fstat-no" title="function not covered" >function( worksheet_id, opts, cb ){</span></span>
+<span class="cstat-no" title="statement not covered">  this.getRows = <span class="fstat-no" title="function not covered">function( worksheet_id, opts, cb ){</span></span>
     // the first row is used as titles/keys and is not included
 &nbsp;
     // opts is optional
-<span class="cstat-no" title="statement not covered" >    if ( typeof( opts ) == 'function' ){</span>
-<span class="cstat-no" title="statement not covered" >      cb = opts;</span>
-<span class="cstat-no" title="statement not covered" >      opts = {};</span>
+<span class="cstat-no" title="statement not covered">    if ( typeof( opts ) == 'function' ){</span>
+<span class="cstat-no" title="statement not covered">      cb = opts;</span>
+<span class="cstat-no" title="statement not covered">      opts = {};</span>
     }
 &nbsp;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    var query  = {}</span>
+<span class="cstat-no" title="statement not covered">    var query  = {}</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if ( opts.offset ) <span class="cstat-no" title="statement not covered" >query["start-index"] = opts.offset;</span></span>
-    else <span class="cstat-no" title="statement not covered" >if ( opts.start ) <span class="cstat-no" title="statement not covered" >query["start-index"] = opts.start;</span></span>
+<span class="cstat-no" title="statement not covered">    if ( opts.offset ) <span class="cstat-no" title="statement not covered">query["start-index"] = opts.offset;</span></span>
+    else <span class="cstat-no" title="statement not covered">if ( opts.start ) <span class="cstat-no" title="statement not covered">query["start-index"] = opts.start;</span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if ( opts.limit ) <span class="cstat-no" title="statement not covered" >query["max-results"] = opts.limit;</span></span>
-    else <span class="cstat-no" title="statement not covered" >if ( opts.num ) <span class="cstat-no" title="statement not covered" >query["max-results"] = opts.num;</span></span>
+<span class="cstat-no" title="statement not covered">    if ( opts.limit ) <span class="cstat-no" title="statement not covered">query["max-results"] = opts.limit;</span></span>
+    else <span class="cstat-no" title="statement not covered">if ( opts.num ) <span class="cstat-no" title="statement not covered">query["max-results"] = opts.num;</span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if ( opts.orderby ) <span class="cstat-no" title="statement not covered" >query["orderby"] = opts.orderby;</span></span>
-<span class="cstat-no" title="statement not covered" >    if ( opts.reverse ) <span class="cstat-no" title="statement not covered" >query["reverse"] = 'true';</span></span>
-<span class="cstat-no" title="statement not covered" >    if ( opts.query ) <span class="cstat-no" title="statement not covered" >query['sq'] = opts.query;</span></span>
+<span class="cstat-no" title="statement not covered">    if ( opts.orderby ) <span class="cstat-no" title="statement not covered">query["orderby"] = opts.orderby;</span></span>
+<span class="cstat-no" title="statement not covered">    if ( opts.reverse ) <span class="cstat-no" title="statement not covered">query["reverse"] = 'true';</span></span>
+<span class="cstat-no" title="statement not covered">    if ( opts.query ) <span class="cstat-no" title="statement not covered">query['sq'] = opts.query;</span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    self.makeFeedRequest( ["list", ss_key, worksheet_id], 'GET', query, <span class="fstat-no" title="function not covered" >function(err, data, xml) {</span></span>
-<span class="cstat-no" title="statement not covered" >      if ( err ) <span class="cstat-no" title="statement not covered" >return cb( err );</span></span>
-<span class="cstat-no" title="statement not covered" >      if (data===true) {</span>
-<span class="cstat-no" title="statement not covered" >        return cb(new Error('No response to getRows call'))</span>
+<span class="cstat-no" title="statement not covered">    self.makeFeedRequest( ["list", ss_key, worksheet_id], 'GET', query, <span class="fstat-no" title="function not covered">function(err, data, xml) {</span></span>
+<span class="cstat-no" title="statement not covered">      if ( err ) <span class="cstat-no" title="statement not covered">return cb( err );</span></span>
+<span class="cstat-no" title="statement not covered">      if (data===true) {</span>
+<span class="cstat-no" title="statement not covered">        return cb(new Error('No response to getRows call'))</span>
       }
 &nbsp;
       // gets the raw xml for each entry -- this is passed to the row object so we can do updates on it later
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      var entries_xml = xml.match(/&lt;entry[^&gt;]*&gt;([\s\S]*?)&lt;\/entry&gt;/g);</span>
+<span class="cstat-no" title="statement not covered">      var entries_xml = xml.match(/&lt;entry[^&gt;]*&gt;([\s\S]*?)&lt;\/entry&gt;/g);</span>
 &nbsp;
 &nbsp;
       // need to add the properties from the feed to the xml for the entries
-<span class="cstat-no" title="statement not covered" >      var feed_props = _.clone(data.$);</span>
-<span class="cstat-no" title="statement not covered" >      delete feed_props['gd:etag'];</span>
-<span class="cstat-no" title="statement not covered" >      var feed_props_str = _.reduce(feed_props, <span class="fstat-no" title="function not covered" >function(str, val, key){</span></span>
-<span class="cstat-no" title="statement not covered" >        return str+key+'=\''+val+'\' ';</span>
+<span class="cstat-no" title="statement not covered">      var feed_props = _.clone(data.$);</span>
+<span class="cstat-no" title="statement not covered">      delete feed_props['gd:etag'];</span>
+<span class="cstat-no" title="statement not covered">      var feed_props_str = _.reduce(feed_props, <span class="fstat-no" title="function not covered">function(str, val, key){</span></span>
+<span class="cstat-no" title="statement not covered">        return str+key+'=\''+val+'\' ';</span>
       }, '');
-<span class="cstat-no" title="statement not covered" >      entries_xml = _.map(entries_xml, <span class="fstat-no" title="function not covered" >function(xml){</span></span>
-<span class="cstat-no" title="statement not covered" >        return xml.replace('&lt;entry ', '&lt;entry '+feed_props_str);</span>
+<span class="cstat-no" title="statement not covered">      entries_xml = _.map(entries_xml, <span class="fstat-no" title="function not covered">function(xml){</span></span>
+<span class="cstat-no" title="statement not covered">        return xml.replace('&lt;entry ', '&lt;entry '+feed_props_str);</span>
       });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      var rows = [];</span>
-<span class="cstat-no" title="statement not covered" >      var entries = forceArray( data.entry );</span>
-<span class="cstat-no" title="statement not covered" >      var i=0;</span>
-<span class="cstat-no" title="statement not covered" >      entries.forEach( <span class="fstat-no" title="function not covered" >function( row_data ) {</span></span>
-<span class="cstat-no" title="statement not covered" >        rows.push( new SpreadsheetRow( self, row_data, entries_xml[ i++ ] ) );</span>
+<span class="cstat-no" title="statement not covered">      var rows = [];</span>
+<span class="cstat-no" title="statement not covered">      var entries = forceArray( data.entry );</span>
+<span class="cstat-no" title="statement not covered">      var i=0;</span>
+<span class="cstat-no" title="statement not covered">      entries.forEach( <span class="fstat-no" title="function not covered">function( row_data ) {</span></span>
+<span class="cstat-no" title="statement not covered">        rows.push( new SpreadsheetRow( self, row_data, entries_xml[ i++ ] ) );</span>
       });
-<span class="cstat-no" title="statement not covered" >      cb(null, rows);</span>
+<span class="cstat-no" title="statement not covered">      cb(null, rows);</span>
     });
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  this.addRow = <span class="fstat-no" title="function not covered" >function( worksheet_id, data, cb ){</span></span>
-<span class="cstat-no" title="statement not covered" >    var data_xml = '&lt;entry xmlns="http://www.w3.org/2005/Atom" xmlns:gsx="http://schemas.google.com/spreadsheets/2006/extended"&gt;' + "\n";</span>
-<span class="cstat-no" title="statement not covered" >    Object.keys(data).forEach(<span class="fstat-no" title="function not covered" >function(key) {</span></span>
-<span class="cstat-no" title="statement not covered" >      if (key != 'id' &amp;&amp; key != 'title' &amp;&amp; key != 'content' &amp;&amp; key != '_links'){</span>
-<span class="cstat-no" title="statement not covered" >        data_xml += '&lt;gsx:'+ xmlSafeColumnName(key) + '&gt;' + xmlSafeValue(data[key]) + '&lt;/gsx:'+ xmlSafeColumnName(key) + '&gt;' + "\n"</span>
+<span class="cstat-no" title="statement not covered">  this.addRow = <span class="fstat-no" title="function not covered">function( worksheet_id, data, cb ){</span></span>
+<span class="cstat-no" title="statement not covered">    var data_xml = '&lt;entry xmlns="http://www.w3.org/2005/Atom" xmlns:gsx="http://schemas.google.com/spreadsheets/2006/extended"&gt;' + "\n";</span>
+<span class="cstat-no" title="statement not covered">    Object.keys(data).forEach(<span class="fstat-no" title="function not covered">function(key) {</span></span>
+<span class="cstat-no" title="statement not covered">      if (key != 'id' &amp;&amp; key != 'title' &amp;&amp; key != 'content' &amp;&amp; key != '_links'){</span>
+<span class="cstat-no" title="statement not covered">        data_xml += '&lt;gsx:'+ xmlSafeColumnName(key) + '&gt;' + xmlSafeValue(data[key]) + '&lt;/gsx:'+ xmlSafeColumnName(key) + '&gt;' + "\n"</span>
       }
     });
-<span class="cstat-no" title="statement not covered" >    data_xml += '&lt;/entry&gt;';</span>
-<span class="cstat-no" title="statement not covered" >    self.makeFeedRequest( ["list", ss_key, worksheet_id], 'POST', data_xml, cb );</span>
+<span class="cstat-no" title="statement not covered">    data_xml += '&lt;/entry&gt;';</span>
+<span class="cstat-no" title="statement not covered">    self.makeFeedRequest( ["list", ss_key, worksheet_id], 'POST', data_xml, cb );</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  this.getCells = <span class="fstat-no" title="function not covered" >function (worksheet_id, opts, cb) {</span></span>
+<span class="cstat-no" title="statement not covered">  this.getCells = <span class="fstat-no" title="function not covered">function (worksheet_id, opts, cb) {</span></span>
     // opts is optional
-<span class="cstat-no" title="statement not covered" >    if (typeof( opts ) == 'function') {</span>
-<span class="cstat-no" title="statement not covered" >      cb = opts;</span>
-<span class="cstat-no" title="statement not covered" >      opts = {};</span>
+<span class="cstat-no" title="statement not covered">    if (typeof( opts ) == 'function') {</span>
+<span class="cstat-no" title="statement not covered">      cb = opts;</span>
+<span class="cstat-no" title="statement not covered">      opts = {};</span>
     }
 &nbsp;
     // Supported options are:
     // min-row, max-row, min-col, max-col, return-empty
-<span class="cstat-no" title="statement not covered" >    var query = _.assign({}, opts);</span>
+<span class="cstat-no" title="statement not covered">    var query = _.assign({}, opts);</span>
 &nbsp;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    self.makeFeedRequest(["cells", ss_key, worksheet_id], 'GET', query, <span class="fstat-no" title="function not covered" >function (err, data, xml) {</span></span>
-<span class="cstat-no" title="statement not covered" >      if (err) <span class="cstat-no" title="statement not covered" >return cb(err);</span></span>
-<span class="cstat-no" title="statement not covered" >      if (data===true) {</span>
-<span class="cstat-no" title="statement not covered" >        return cb(new Error('No response to getCells call'))</span>
+<span class="cstat-no" title="statement not covered">    self.makeFeedRequest(["cells", ss_key, worksheet_id], 'GET', query, <span class="fstat-no" title="function not covered">function (err, data, xml) {</span></span>
+<span class="cstat-no" title="statement not covered">      if (err) <span class="cstat-no" title="statement not covered">return cb(err);</span></span>
+<span class="cstat-no" title="statement not covered">      if (data===true) {</span>
+<span class="cstat-no" title="statement not covered">        return cb(new Error('No response to getCells call'))</span>
       }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      var cells = [];</span>
-<span class="cstat-no" title="statement not covered" >      var entries = forceArray(data['entry']);</span>
-<span class="cstat-no" title="statement not covered" >      var i = 0;</span>
-<span class="cstat-no" title="statement not covered" >      entries.forEach(<span class="fstat-no" title="function not covered" >function( cell_data ){</span></span>
-<span class="cstat-no" title="statement not covered" >        cells.push( new SpreadsheetCell( self, worksheet_id, cell_data ) );</span>
+<span class="cstat-no" title="statement not covered">      var cells = [];</span>
+<span class="cstat-no" title="statement not covered">      var entries = forceArray(data['entry']);</span>
+<span class="cstat-no" title="statement not covered">      var i = 0;</span>
+<span class="cstat-no" title="statement not covered">      entries.forEach(<span class="fstat-no" title="function not covered">function( cell_data ){</span></span>
+<span class="cstat-no" title="statement not covered">        cells.push( new SpreadsheetCell( self, worksheet_id, cell_data ) );</span>
       });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      cb( null, cells );</span>
+<span class="cstat-no" title="statement not covered">      cb( null, cells );</span>
     });
   }
 };
 &nbsp;
 // Classes
-var SpreadsheetWorksheet = <span class="fstat-no" title="function not covered" >function( spreadsheet, data ){</span>
-<span class="cstat-no" title="statement not covered" >  var self = this;</span>
+var SpreadsheetWorksheet = <span class="fstat-no" title="function not covered">function( spreadsheet, data ){</span>
+<span class="cstat-no" title="statement not covered">  var self = this;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  self.url = data.id;</span>
-<span class="cstat-no" title="statement not covered" >  self.id = data.id.substring( data.id.lastIndexOf("/") + 1 );</span>
-<span class="cstat-no" title="statement not covered" >  self.title = data.title;</span>
-<span class="cstat-no" title="statement not covered" >  self.rowCount = parseInt(data['gs:rowCount']);</span>
-<span class="cstat-no" title="statement not covered" >  self.colCount = parseInt(data['gs:colCount']);</span>
+<span class="cstat-no" title="statement not covered">  self.url = data.id;</span>
+<span class="cstat-no" title="statement not covered">  self.id = data.id.substring( data.id.lastIndexOf("/") + 1 );</span>
+<span class="cstat-no" title="statement not covered">  self.title = data.title;</span>
+<span class="cstat-no" title="statement not covered">  self.rowCount = parseInt(data['gs:rowCount']);</span>
+<span class="cstat-no" title="statement not covered">  self.colCount = parseInt(data['gs:colCount']);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  self['_links'] = [];</span>
-<span class="cstat-no" title="statement not covered" >  links = forceArray( data.link );</span>
-<span class="cstat-no" title="statement not covered" >  links.forEach( <span class="fstat-no" title="function not covered" >function( link ){</span></span>
-<span class="cstat-no" title="statement not covered" >    self['_links'][ link['$']['rel'] ] = link['$']['href'];</span>
+<span class="cstat-no" title="statement not covered">  self['_links'] = [];</span>
+<span class="cstat-no" title="statement not covered">  links = forceArray( data.link );</span>
+<span class="cstat-no" title="statement not covered">  links.forEach( <span class="fstat-no" title="function not covered">function( link ){</span></span>
+<span class="cstat-no" title="statement not covered">    self['_links'][ link['$']['rel'] ] = link['$']['href'];</span>
   });
-<span class="cstat-no" title="statement not covered" >  self['_links']['cells'] = self['_links']['http://schemas.google.com/spreadsheets/2006#cellsfeed'];</span>
-<span class="cstat-no" title="statement not covered" >  self['_links']['bulkcells'] = self['_links']['cells']+'/batch';</span>
+<span class="cstat-no" title="statement not covered">  self['_links']['cells'] = self['_links']['http://schemas.google.com/spreadsheets/2006#cellsfeed'];</span>
+<span class="cstat-no" title="statement not covered">  self['_links']['bulkcells'] = self['_links']['cells']+'/batch';</span>
 &nbsp;
-<span class="fstat-no" title="function not covered" >  function _setInfo(opts, cb) {</span>
-<span class="cstat-no" title="statement not covered" >    cb = cb || _.noop;</span>
-<span class="cstat-no" title="statement not covered" >    var xml = ''</span>
+<span class="fstat-no" title="function not covered">  function _setInfo(opts, cb) {</span>
+<span class="cstat-no" title="statement not covered">    cb = cb || _.noop;</span>
+<span class="cstat-no" title="statement not covered">    var xml = ''</span>
       + '&lt;entry xmlns="http://www.w3.org/2005/Atom" xmlns:gs="http://schemas.google.com/spreadsheets/2006"&gt;'
       + '&lt;title&gt;'+(opts.title || self.title)+'&lt;/title&gt;'
       + '&lt;gs:rowCount&gt;'+(opts.rowCount || self.rowCount)+'&lt;/gs:rowCount&gt;'
       + '&lt;gs:colCount&gt;'+(opts.colCount || self.colCount)+'&lt;/gs:colCount&gt;'
       + '&lt;/entry&gt;';
-<span class="cstat-no" title="statement not covered" >    spreadsheet.makeFeedRequest(self['_links']['edit'], 'PUT', xml, <span class="fstat-no" title="function not covered" >function(err, response) {</span></span>
-<span class="cstat-no" title="statement not covered" >      if (err) <span class="cstat-no" title="statement not covered" >return cb(err);</span></span>
-<span class="cstat-no" title="statement not covered" >      self.title = response.title;</span>
-<span class="cstat-no" title="statement not covered" >      self.rowCount = parseInt(response['gs:rowCount']);</span>
-<span class="cstat-no" title="statement not covered" >      self.colCount = parseInt(response['gs:colCount']);</span>
-<span class="cstat-no" title="statement not covered" >      cb();</span>
+<span class="cstat-no" title="statement not covered">    spreadsheet.makeFeedRequest(self['_links']['edit'], 'PUT', xml, <span class="fstat-no" title="function not covered">function(err, response) {</span></span>
+<span class="cstat-no" title="statement not covered">      if (err) <span class="cstat-no" title="statement not covered">return cb(err);</span></span>
+<span class="cstat-no" title="statement not covered">      self.title = response.title;</span>
+<span class="cstat-no" title="statement not covered">      self.rowCount = parseInt(response['gs:rowCount']);</span>
+<span class="cstat-no" title="statement not covered">      self.colCount = parseInt(response['gs:colCount']);</span>
+<span class="cstat-no" title="statement not covered">      cb();</span>
     });
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  this.resize = _setInfo;</span>
-<span class="cstat-no" title="statement not covered" >  this.setTitle = <span class="fstat-no" title="function not covered" >function(title, cb) {</span></span>
-<span class="cstat-no" title="statement not covered" >    _setInfo({title: title}, cb);</span>
+<span class="cstat-no" title="statement not covered">  this.resize = _setInfo;</span>
+<span class="cstat-no" title="statement not covered">  this.setTitle = <span class="fstat-no" title="function not covered">function(title, cb) {</span></span>
+<span class="cstat-no" title="statement not covered">    _setInfo({title: title}, cb);</span>
   }
 &nbsp;
 &nbsp;
   // just a convenience method to clear the whole sheet
   // resizes to 1 cell, clears the cell, and puts it back
-<span class="cstat-no" title="statement not covered" >  this.clear = <span class="fstat-no" title="function not covered" >function(cb) {</span></span>
-<span class="cstat-no" title="statement not covered" >    var cols = self.colCount;</span>
-<span class="cstat-no" title="statement not covered" >    var rows = self.colCount;</span>
-<span class="cstat-no" title="statement not covered" >    self.resize({rowCount: 1, colCount: 1}, <span class="fstat-no" title="function not covered" >function(err) {</span></span>
-<span class="cstat-no" title="statement not covered" >      if (err) <span class="cstat-no" title="statement not covered" >return cb(err);</span></span>
-<span class="cstat-no" title="statement not covered" >      self.getCells(<span class="fstat-no" title="function not covered" >function(err, cells) {</span></span>
-<span class="cstat-no" title="statement not covered" >        cells[0].setValue(null, <span class="fstat-no" title="function not covered" >function(err) {</span></span>
-<span class="cstat-no" title="statement not covered" >          if (err) <span class="cstat-no" title="statement not covered" >return cb(err);</span></span>
-<span class="cstat-no" title="statement not covered" >          self.resize({rowCount: rows, colCount: cols}, cb);</span>
+<span class="cstat-no" title="statement not covered">  this.clear = <span class="fstat-no" title="function not covered">function(cb) {</span></span>
+<span class="cstat-no" title="statement not covered">    var cols = self.colCount;</span>
+<span class="cstat-no" title="statement not covered">    var rows = self.colCount;</span>
+<span class="cstat-no" title="statement not covered">    self.resize({rowCount: 1, colCount: 1}, <span class="fstat-no" title="function not covered">function(err) {</span></span>
+<span class="cstat-no" title="statement not covered">      if (err) <span class="cstat-no" title="statement not covered">return cb(err);</span></span>
+<span class="cstat-no" title="statement not covered">      self.getCells(<span class="fstat-no" title="function not covered">function(err, cells) {</span></span>
+<span class="cstat-no" title="statement not covered">        cells[0].setValue(null, <span class="fstat-no" title="function not covered">function(err) {</span></span>
+<span class="cstat-no" title="statement not covered">          if (err) <span class="cstat-no" title="statement not covered">return cb(err);</span></span>
+<span class="cstat-no" title="statement not covered">          self.resize({rowCount: rows, colCount: cols}, cb);</span>
         });
       })
     });
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  this.getRows = <span class="fstat-no" title="function not covered" >function(opts, cb){</span></span>
-<span class="cstat-no" title="statement not covered" >    spreadsheet.getRows(self.id, opts, cb);</span>
+<span class="cstat-no" title="statement not covered">  this.getRows = <span class="fstat-no" title="function not covered">function(opts, cb){</span></span>
+<span class="cstat-no" title="statement not covered">    spreadsheet.getRows(self.id, opts, cb);</span>
   }
-<span class="cstat-no" title="statement not covered" >  this.getCells = <span class="fstat-no" title="function not covered" >function(opts, cb) {</span></span>
-<span class="cstat-no" title="statement not covered" >    spreadsheet.getCells(self.id, opts, cb);</span>
+<span class="cstat-no" title="statement not covered">  this.getCells = <span class="fstat-no" title="function not covered">function(opts, cb) {</span></span>
+<span class="cstat-no" title="statement not covered">    spreadsheet.getCells(self.id, opts, cb);</span>
   }
-<span class="cstat-no" title="statement not covered" >  this.addRow = <span class="fstat-no" title="function not covered" >function(data, cb){</span></span>
-<span class="cstat-no" title="statement not covered" >    spreadsheet.addRow(self.id, data, cb);</span>
+<span class="cstat-no" title="statement not covered">  this.addRow = <span class="fstat-no" title="function not covered">function(data, cb){</span></span>
+<span class="cstat-no" title="statement not covered">    spreadsheet.addRow(self.id, data, cb);</span>
   }
-<span class="cstat-no" title="statement not covered" >  this.bulkUpdateCells = <span class="fstat-no" title="function not covered" >function(cells, cb) {</span></span>
-<span class="cstat-no" title="statement not covered" >    var entries = cells.map(<span class="fstat-no" title="function not covered" >function (cell, i) {</span></span>
-<span class="cstat-no" title="statement not covered" >      cell._needsSave = false;</span>
-<span class="cstat-no" title="statement not covered" >      return "&lt;entry&gt;\n        &lt;batch:id&gt;" + cell.batchId + "&lt;/batch:id&gt;\n        &lt;batch:operation type=\"update\"/&gt;\n        &lt;id&gt;" + self['_links']['cells']+'/'+cell.batchId + "&lt;/id&gt;\n        &lt;link rel=\"edit\" type=\"application/atom+xml\"\n          href=\"" + cell._links.edit + "\"/&gt;\n        &lt;gs:cell row=\"" + cell.row + "\" col=\"" + cell.col + "\" inputValue=\"" + cell.valueForSave + "\"/&gt;\n      &lt;/entry&gt;";</span>
+<span class="cstat-no" title="statement not covered">  this.bulkUpdateCells = <span class="fstat-no" title="function not covered">function(cells, cb) {</span></span>
+<span class="cstat-no" title="statement not covered">    var entries = cells.map(<span class="fstat-no" title="function not covered">function (cell, i) {</span></span>
+<span class="cstat-no" title="statement not covered">      cell._needsSave = false;</span>
+<span class="cstat-no" title="statement not covered">      return "&lt;entry&gt;\n        &lt;batch:id&gt;" + cell.batchId + "&lt;/batch:id&gt;\n        &lt;batch:operation type=\"update\"/&gt;\n        &lt;id&gt;" + self['_links']['cells']+'/'+cell.batchId + "&lt;/id&gt;\n        &lt;link rel=\"edit\" type=\"application/atom+xml\"\n          href=\"" + cell._links.edit + "\"/&gt;\n        &lt;gs:cell row=\"" + cell.row + "\" col=\"" + cell.col + "\" inputValue=\"" + cell.valueForSave + "\"/&gt;\n      &lt;/entry&gt;";</span>
     });
-<span class="cstat-no" title="statement not covered" >    var data_xml = "&lt;feed xmlns=\"http://www.w3.org/2005/Atom\"\n      xmlns:batch=\"http://schemas.google.com/gdata/batch\"\n      xmlns:gs=\"http://schemas.google.com/spreadsheets/2006\"&gt;\n      &lt;id&gt;" + self['_links']['cells'] + "&lt;/id&gt;\n      " + entries.join("\n") + "\n    &lt;/feed&gt;";</span>
+<span class="cstat-no" title="statement not covered">    var data_xml = "&lt;feed xmlns=\"http://www.w3.org/2005/Atom\"\n      xmlns:batch=\"http://schemas.google.com/gdata/batch\"\n      xmlns:gs=\"http://schemas.google.com/spreadsheets/2006\"&gt;\n      &lt;id&gt;" + self['_links']['cells'] + "&lt;/id&gt;\n      " + entries.join("\n") + "\n    &lt;/feed&gt;";</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    spreadsheet.makeFeedRequest(self['_links']['bulkcells'], 'POST', data_xml, <span class="fstat-no" title="function not covered" >function(err, data) {</span></span>
-<span class="cstat-no" title="statement not covered" >      if (err) <span class="cstat-no" title="statement not covered" >return cb(err);</span></span>
+<span class="cstat-no" title="statement not covered">    spreadsheet.makeFeedRequest(self['_links']['bulkcells'], 'POST', data_xml, <span class="fstat-no" title="function not covered">function(err, data) {</span></span>
+<span class="cstat-no" title="statement not covered">      if (err) <span class="cstat-no" title="statement not covered">return cb(err);</span></span>
 &nbsp;
       // update all the cells
-<span class="cstat-no" title="statement not covered" >      var cells_by_batch_id = _.indexBy(cells, 'batchId');</span>
-<span class="cstat-no" title="statement not covered" >      if (data.entry &amp;&amp; data.entry.length) <span class="cstat-no" title="statement not covered" >data.entry.forEach(<span class="fstat-no" title="function not covered" >function(cell_data) {</span></span></span>
-<span class="cstat-no" title="statement not covered" >        cells_by_batch_id[cell_data['batch:id']].updateValuesFromResponseData(cell_data);</span>
+<span class="cstat-no" title="statement not covered">      var cells_by_batch_id = _.indexBy(cells, 'batchId');</span>
+<span class="cstat-no" title="statement not covered">      if (data.entry &amp;&amp; data.entry.length) <span class="cstat-no" title="statement not covered">data.entry.forEach(<span class="fstat-no" title="function not covered">function(cell_data) {</span></span></span>
+<span class="cstat-no" title="statement not covered">        cells_by_batch_id[cell_data['batch:id']].updateValuesFromResponseData(cell_data);</span>
       });
-<span class="cstat-no" title="statement not covered" >      cb();</span>
+<span class="cstat-no" title="statement not covered">      cb();</span>
     });
   }
-<span class="cstat-no" title="statement not covered" >  this.del = <span class="fstat-no" title="function not covered" >function(cb){</span></span>
-<span class="cstat-no" title="statement not covered" >    spreadsheet.makeFeedRequest(self['_links']['edit'], 'DELETE', null, cb);</span>
+<span class="cstat-no" title="statement not covered">  this.del = <span class="fstat-no" title="function not covered">function(cb){</span></span>
+<span class="cstat-no" title="statement not covered">    spreadsheet.makeFeedRequest(self['_links']['edit'], 'DELETE', null, cb);</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  this.setHeaderRow = <span class="fstat-no" title="function not covered" >function(values, cb) {</span></span>
-<span class="cstat-no" title="statement not covered" >    if (!values) <span class="cstat-no" title="statement not covered" >return cb();</span></span>
-<span class="cstat-no" title="statement not covered" >    if (values.length &gt; self.colCount){</span>
-<span class="cstat-no" title="statement not covered" >      return cb(new Error('Sheet is not large enough to fit '+values.length+' columns. Resize the sheet first.'));</span>
+<span class="cstat-no" title="statement not covered">  this.setHeaderRow = <span class="fstat-no" title="function not covered">function(values, cb) {</span></span>
+<span class="cstat-no" title="statement not covered">    if (!values) <span class="cstat-no" title="statement not covered">return cb();</span></span>
+<span class="cstat-no" title="statement not covered">    if (values.length &gt; self.colCount){</span>
+<span class="cstat-no" title="statement not covered">      return cb(new Error('Sheet is not large enough to fit '+values.length+' columns. Resize the sheet first.'));</span>
     }
-<span class="cstat-no" title="statement not covered" >    self.getCells({</span>
+<span class="cstat-no" title="statement not covered">    self.getCells({</span>
       'min-row': 1,
       'max-row': 1,
       'min-col': 1,
       'max-col': self.colCount,
       'return-empty': true
-    }, <span class="fstat-no" title="function not covered" >function(err, cells) {</span>
-<span class="cstat-no" title="statement not covered" >      if (err) <span class="cstat-no" title="statement not covered" >return cb(err);</span></span>
-<span class="cstat-no" title="statement not covered" >      _.each(cells, <span class="fstat-no" title="function not covered" >function(cell) {</span></span>
-<span class="cstat-no" title="statement not covered" >        cell.value = values[cell.col-1] ? values[cell.col-1] : '';</span>
+    }, <span class="fstat-no" title="function not covered">function(err, cells) {</span>
+<span class="cstat-no" title="statement not covered">      if (err) <span class="cstat-no" title="statement not covered">return cb(err);</span></span>
+<span class="cstat-no" title="statement not covered">      _.each(cells, <span class="fstat-no" title="function not covered">function(cell) {</span></span>
+<span class="cstat-no" title="statement not covered">        cell.value = values[cell.col-1] ? values[cell.col-1] : '';</span>
       });
-<span class="cstat-no" title="statement not covered" >      self.bulkUpdateCells(cells, cb);</span>
+<span class="cstat-no" title="statement not covered">      self.bulkUpdateCells(cells, cb);</span>
     });
   }
 }
 &nbsp;
-var SpreadsheetRow = <span class="fstat-no" title="function not covered" >function( spreadsheet, data, xml ){</span>
-<span class="cstat-no" title="statement not covered" >  var self = this;</span>
-<span class="cstat-no" title="statement not covered" >  self['_xml'] = xml;</span>
-<span class="cstat-no" title="statement not covered" >  Object.keys(data).forEach(<span class="fstat-no" title="function not covered" >function(key) {</span></span>
-<span class="cstat-no" title="statement not covered" >    var val = data[key];</span>
-<span class="cstat-no" title="statement not covered" >    if(key.substring(0, 4) === "gsx:") {</span>
-<span class="cstat-no" title="statement not covered" >      if(typeof val === 'object' &amp;&amp; Object.keys(val).length === 0) {</span>
-<span class="cstat-no" title="statement not covered" >        val = null;</span>
+var SpreadsheetRow = <span class="fstat-no" title="function not covered">function( spreadsheet, data, xml ){</span>
+<span class="cstat-no" title="statement not covered">  var self = this;</span>
+<span class="cstat-no" title="statement not covered">  self['_xml'] = xml;</span>
+<span class="cstat-no" title="statement not covered">  Object.keys(data).forEach(<span class="fstat-no" title="function not covered">function(key) {</span></span>
+<span class="cstat-no" title="statement not covered">    var val = data[key];</span>
+<span class="cstat-no" title="statement not covered">    if(key.substring(0, 4) === "gsx:") {</span>
+<span class="cstat-no" title="statement not covered">      if(typeof val === 'object' &amp;&amp; Object.keys(val).length === 0) {</span>
+<span class="cstat-no" title="statement not covered">        val = null;</span>
       }
-<span class="cstat-no" title="statement not covered" >      if (key == "gsx:") {</span>
-<span class="cstat-no" title="statement not covered" >        self[key.substring(0, 3)] = val;</span>
+<span class="cstat-no" title="statement not covered">      if (key == "gsx:") {</span>
+<span class="cstat-no" title="statement not covered">        self[key.substring(0, 3)] = val;</span>
       } else {
-<span class="cstat-no" title="statement not covered" >        self[key.substring(4)] = val;</span>
+<span class="cstat-no" title="statement not covered">        self[key.substring(4)] = val;</span>
       }
     } else {
-<span class="cstat-no" title="statement not covered" >      if (key == "id") {</span>
-<span class="cstat-no" title="statement not covered" >        self[key] = val;</span>
-      } else <span class="cstat-no" title="statement not covered" >if (val['_']) {</span>
-<span class="cstat-no" title="statement not covered" >        self[key] = val['_'];</span>
-      } else <span class="cstat-no" title="statement not covered" >if ( key == 'link' ){</span>
-<span class="cstat-no" title="statement not covered" >        self['_links'] = [];</span>
-<span class="cstat-no" title="statement not covered" >        val = forceArray( val );</span>
-<span class="cstat-no" title="statement not covered" >        val.forEach( <span class="fstat-no" title="function not covered" >function( link ){</span></span>
-<span class="cstat-no" title="statement not covered" >          self['_links'][ link['$']['rel'] ] = link['$']['href'];</span>
+<span class="cstat-no" title="statement not covered">      if (key == "id") {</span>
+<span class="cstat-no" title="statement not covered">        self[key] = val;</span>
+      } else <span class="cstat-no" title="statement not covered">if (val['_']) {</span>
+<span class="cstat-no" title="statement not covered">        self[key] = val['_'];</span>
+      } else <span class="cstat-no" title="statement not covered">if ( key == 'link' ){</span>
+<span class="cstat-no" title="statement not covered">        self['_links'] = [];</span>
+<span class="cstat-no" title="statement not covered">        val = forceArray( val );</span>
+<span class="cstat-no" title="statement not covered">        val.forEach( <span class="fstat-no" title="function not covered">function( link ){</span></span>
+<span class="cstat-no" title="statement not covered">          self['_links'][ link['$']['rel'] ] = link['$']['href'];</span>
         });
       }
     }
   }, this);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  self.save = <span class="fstat-no" title="function not covered" >function( cb ){</span></span>
+<span class="cstat-no" title="statement not covered">  self.save = <span class="fstat-no" title="function not covered">function( cb ){</span></span>
     /*
     API for edits is very strict with the XML it accepts
     So we just do a find replace on the original XML.
     It's dumb, but I couldnt get any JSON-&gt;XML conversion to work reliably
     */
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    var data_xml = self['_xml'];</span>
+<span class="cstat-no" title="statement not covered">    var data_xml = self['_xml'];</span>
     // probably should make this part more robust?
-<span class="cstat-no" title="statement not covered" >    data_xml = data_xml.replace('&lt;entry&gt;', "&lt;entry xmlns='http://www.w3.org/2005/Atom' xmlns:gsx='http://schemas.google.com/spreadsheets/2006/extended'&gt;");</span>
-<span class="cstat-no" title="statement not covered" >      Object.keys( self ).forEach( <span class="fstat-no" title="function not covered" >function(key) {</span></span>
-<span class="cstat-no" title="statement not covered" >        if (key.substr(0,1) != '_' &amp;&amp; typeof( self[key] == 'string') ){</span>
-<span class="cstat-no" title="statement not covered" >          data_xml = data_xml.replace( new RegExp('&lt;gsx:'+xmlSafeColumnName(key)+"&gt;([\\s\\S]*?)&lt;/gsx:"+xmlSafeColumnName(key)+'&gt;'), '&lt;gsx:'+xmlSafeColumnName(key)+'&gt;'+ xmlSafeValue(self[key]) +'&lt;/gsx:'+xmlSafeColumnName(key)+'&gt;');</span>
+<span class="cstat-no" title="statement not covered">    data_xml = data_xml.replace('&lt;entry&gt;', "&lt;entry xmlns='http://www.w3.org/2005/Atom' xmlns:gsx='http://schemas.google.com/spreadsheets/2006/extended'&gt;");</span>
+<span class="cstat-no" title="statement not covered">      Object.keys( self ).forEach( <span class="fstat-no" title="function not covered">function(key) {</span></span>
+<span class="cstat-no" title="statement not covered">        if (key.substr(0,1) != '_' &amp;&amp; typeof( self[key] == 'string') ){</span>
+<span class="cstat-no" title="statement not covered">          data_xml = data_xml.replace( new RegExp('&lt;gsx:'+xmlSafeColumnName(key)+"&gt;([\\s\\S]*?)&lt;/gsx:"+xmlSafeColumnName(key)+'&gt;'), '&lt;gsx:'+xmlSafeColumnName(key)+'&gt;'+ xmlSafeValue(self[key]) +'&lt;/gsx:'+xmlSafeColumnName(key)+'&gt;');</span>
         }
     });
-<span class="cstat-no" title="statement not covered" >    spreadsheet.makeFeedRequest( self['_links']['edit'], 'PUT', data_xml, cb );</span>
+<span class="cstat-no" title="statement not covered">    spreadsheet.makeFeedRequest( self['_links']['edit'], 'PUT', data_xml, cb );</span>
   }
-<span class="cstat-no" title="statement not covered" >  self.del = <span class="fstat-no" title="function not covered" >function( cb ){</span></span>
-<span class="cstat-no" title="statement not covered" >    spreadsheet.makeFeedRequest( self['_links']['edit'], 'DELETE', null, cb );</span>
+<span class="cstat-no" title="statement not covered">  self.del = <span class="fstat-no" title="function not covered">function( cb ){</span></span>
+<span class="cstat-no" title="statement not covered">    spreadsheet.makeFeedRequest( self['_links']['edit'], 'DELETE', null, cb );</span>
   }
 }
 &nbsp;
-var SpreadsheetCell = <span class="fstat-no" title="function not covered" >function( spreadsheet, worksheet_id, data ){</span>
-<span class="cstat-no" title="statement not covered" >  var self = this;</span>
+var SpreadsheetCell = <span class="fstat-no" title="function not covered">function( spreadsheet, worksheet_id, data ){</span>
+<span class="cstat-no" title="statement not covered">  var self = this;</span>
 &nbsp;
-<span class="fstat-no" title="function not covered" >  function init() {</span>
-<span class="cstat-no" title="statement not covered" >    self.id = data['id'];</span>
-<span class="cstat-no" title="statement not covered" >    self.row = parseInt(data['gs:cell']['$']['row']);</span>
-<span class="cstat-no" title="statement not covered" >    self.col = parseInt(data['gs:cell']['$']['col']);</span>
-<span class="cstat-no" title="statement not covered" >    self.batchId = 'R'+self.row+'C'+self.col;</span>
+<span class="fstat-no" title="function not covered">  function init() {</span>
+<span class="cstat-no" title="statement not covered">    self.id = data['id'];</span>
+<span class="cstat-no" title="statement not covered">    self.row = parseInt(data['gs:cell']['$']['row']);</span>
+<span class="cstat-no" title="statement not covered">    self.col = parseInt(data['gs:cell']['$']['col']);</span>
+<span class="cstat-no" title="statement not covered">    self.batchId = 'R'+self.row+'C'+self.col;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    self['_links'] = [];</span>
-<span class="cstat-no" title="statement not covered" >    links = forceArray( data.link );</span>
-<span class="cstat-no" title="statement not covered" >    links.forEach( <span class="fstat-no" title="function not covered" >function( link ){</span></span>
-<span class="cstat-no" title="statement not covered" >      self['_links'][ link['$']['rel'] ] = link['$']['href'];</span>
+<span class="cstat-no" title="statement not covered">    self['_links'] = [];</span>
+<span class="cstat-no" title="statement not covered">    links = forceArray( data.link );</span>
+<span class="cstat-no" title="statement not covered">    links.forEach( <span class="fstat-no" title="function not covered">function( link ){</span></span>
+<span class="cstat-no" title="statement not covered">      self['_links'][ link['$']['rel'] ] = link['$']['href'];</span>
     });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    self.updateValuesFromResponseData(data);</span>
+<span class="cstat-no" title="statement not covered">    self.updateValuesFromResponseData(data);</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  self.updateValuesFromResponseData = <span class="fstat-no" title="function not covered" >function(_data) {</span></span>
+<span class="cstat-no" title="statement not covered">  self.updateValuesFromResponseData = <span class="fstat-no" title="function not covered">function(_data) {</span></span>
     // formula value
-<span class="cstat-no" title="statement not covered" >    var input_val = _data['gs:cell']['$']['inputValue'];</span>
+<span class="cstat-no" title="statement not covered">    var input_val = _data['gs:cell']['$']['inputValue'];</span>
     // inputValue can be undefined so substr throws an error
     // still unsure how this situation happens
-<span class="cstat-no" title="statement not covered" >    if (input_val &amp;&amp; input_val.substr(0,1) === '='){</span>
-<span class="cstat-no" title="statement not covered" >      self._formula = input_val;</span>
+<span class="cstat-no" title="statement not covered">    if (input_val &amp;&amp; input_val.substr(0,1) === '='){</span>
+<span class="cstat-no" title="statement not covered">      self._formula = input_val;</span>
     } else {
-<span class="cstat-no" title="statement not covered" >      self._formula = undefined;</span>
+<span class="cstat-no" title="statement not covered">      self._formula = undefined;</span>
     }
 &nbsp;
     // numeric values
-<span class="cstat-no" title="statement not covered" >    if (_data['gs:cell']['$']['numericValue'] !== undefined) {</span>
-<span class="cstat-no" title="statement not covered" >      self._numericValue = parseFloat(_data['gs:cell']['$']['numericValue']);</span>
+<span class="cstat-no" title="statement not covered">    if (_data['gs:cell']['$']['numericValue'] !== undefined) {</span>
+<span class="cstat-no" title="statement not covered">      self._numericValue = parseFloat(_data['gs:cell']['$']['numericValue']);</span>
     } else {
-<span class="cstat-no" title="statement not covered" >      self._numericValue = undefined;</span>
+<span class="cstat-no" title="statement not covered">      self._numericValue = undefined;</span>
     }
 &nbsp;
     // the main "value" - its always a string
-<span class="cstat-no" title="statement not covered" >    self._value = _data['gs:cell']['_'] || '';</span>
+<span class="cstat-no" title="statement not covered">    self._value = _data['gs:cell']['_'] || '';</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  self.setValue = <span class="fstat-no" title="function not covered" >function(new_value, cb) {</span></span>
-<span class="cstat-no" title="statement not covered" >    self.value = new_value;</span>
-<span class="cstat-no" title="statement not covered" >    self.save(cb);</span>
+<span class="cstat-no" title="statement not covered">  self.setValue = <span class="fstat-no" title="function not covered">function(new_value, cb) {</span></span>
+<span class="cstat-no" title="statement not covered">    self.value = new_value;</span>
+<span class="cstat-no" title="statement not covered">    self.save(cb);</span>
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  self._clearValue = <span class="fstat-no" title="function not covered" >function() {</span></span>
-<span class="cstat-no" title="statement not covered" >    self._formula = undefined;</span>
-<span class="cstat-no" title="statement not covered" >    self._numericValue = undefined;</span>
-<span class="cstat-no" title="statement not covered" >    self._value = '';</span>
+<span class="cstat-no" title="statement not covered">  self._clearValue = <span class="fstat-no" title="function not covered">function() {</span></span>
+<span class="cstat-no" title="statement not covered">    self._formula = undefined;</span>
+<span class="cstat-no" title="statement not covered">    self._numericValue = undefined;</span>
+<span class="cstat-no" title="statement not covered">    self._value = '';</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  self.__defineGetter__('value', <span class="fstat-no" title="function not covered" >function(){</span></span>
-<span class="cstat-no" title="statement not covered" >    return self._value;</span>
+<span class="cstat-no" title="statement not covered">  self.__defineGetter__('value', <span class="fstat-no" title="function not covered">function(){</span></span>
+<span class="cstat-no" title="statement not covered">    return self._value;</span>
   });
-<span class="cstat-no" title="statement not covered" >  self.__defineSetter__('value', <span class="fstat-no" title="function not covered" >function(val){</span></span>
-<span class="cstat-no" title="statement not covered" >    if (!val) <span class="cstat-no" title="statement not covered" >return self._clearValue();</span></span>
+<span class="cstat-no" title="statement not covered">  self.__defineSetter__('value', <span class="fstat-no" title="function not covered">function(val){</span></span>
+<span class="cstat-no" title="statement not covered">    if (!val) <span class="cstat-no" title="statement not covered">return self._clearValue();</span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    var numeric_val = parseFloat(val);</span>
-<span class="cstat-no" title="statement not covered" >    if (!isNaN(numeric_val)){</span>
-<span class="cstat-no" title="statement not covered" >      self._numericValue = numeric_val;</span>
-<span class="cstat-no" title="statement not covered" >      self._value = val.toString();</span>
+<span class="cstat-no" title="statement not covered">    var numeric_val = parseFloat(val);</span>
+<span class="cstat-no" title="statement not covered">    if (!isNaN(numeric_val)){</span>
+<span class="cstat-no" title="statement not covered">      self._numericValue = numeric_val;</span>
+<span class="cstat-no" title="statement not covered">      self._value = val.toString();</span>
     } else {
-<span class="cstat-no" title="statement not covered" >      self._numericValue = undefined;</span>
-<span class="cstat-no" title="statement not covered" >      self._value = val;</span>
+<span class="cstat-no" title="statement not covered">      self._numericValue = undefined;</span>
+<span class="cstat-no" title="statement not covered">      self._value = val;</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (typeof val == 'string' &amp;&amp; val.substr(0,1) === '=') {</span>
+<span class="cstat-no" title="statement not covered">    if (typeof val == 'string' &amp;&amp; val.substr(0,1) === '=') {</span>
       // use the getter to clear the value
-<span class="cstat-no" title="statement not covered" >      self.formula = val;</span>
+<span class="cstat-no" title="statement not covered">      self.formula = val;</span>
     } else {
-<span class="cstat-no" title="statement not covered" >      self._formula = undefined;</span>
+<span class="cstat-no" title="statement not covered">      self._formula = undefined;</span>
     }
   });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  self.__defineGetter__('formula', <span class="fstat-no" title="function not covered" >function() {</span></span>
-<span class="cstat-no" title="statement not covered" >    return self._formula;</span>
+<span class="cstat-no" title="statement not covered">  self.__defineGetter__('formula', <span class="fstat-no" title="function not covered">function() {</span></span>
+<span class="cstat-no" title="statement not covered">    return self._formula;</span>
   });
-<span class="cstat-no" title="statement not covered" >  self.__defineSetter__('formula', <span class="fstat-no" title="function not covered" >function(val){</span></span>
-<span class="cstat-no" title="statement not covered" >    if (!val) <span class="cstat-no" title="statement not covered" >return self._clearValue();</span></span>
+<span class="cstat-no" title="statement not covered">  self.__defineSetter__('formula', <span class="fstat-no" title="function not covered">function(val){</span></span>
+<span class="cstat-no" title="statement not covered">    if (!val) <span class="cstat-no" title="statement not covered">return self._clearValue();</span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (val.substr(0,1) !== '=') {</span>
-<span class="cstat-no" title="statement not covered" >      throw new Error('Formulas must start with "="');</span>
+<span class="cstat-no" title="statement not covered">    if (val.substr(0,1) !== '=') {</span>
+<span class="cstat-no" title="statement not covered">      throw new Error('Formulas must start with "="');</span>
     }
-<span class="cstat-no" title="statement not covered" >    self._numericValue = undefined;</span>
-<span class="cstat-no" title="statement not covered" >    self._value = '*SAVE TO GET NEW VALUE*';</span>
-<span class="cstat-no" title="statement not covered" >    self._formula = val;</span>
+<span class="cstat-no" title="statement not covered">    self._numericValue = undefined;</span>
+<span class="cstat-no" title="statement not covered">    self._value = '*SAVE TO GET NEW VALUE*';</span>
+<span class="cstat-no" title="statement not covered">    self._formula = val;</span>
   });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  self.__defineGetter__('numericValue', <span class="fstat-no" title="function not covered" >function() {</span></span>
-<span class="cstat-no" title="statement not covered" >    return self._numericValue;</span>
+<span class="cstat-no" title="statement not covered">  self.__defineGetter__('numericValue', <span class="fstat-no" title="function not covered">function() {</span></span>
+<span class="cstat-no" title="statement not covered">    return self._numericValue;</span>
   });
-<span class="cstat-no" title="statement not covered" >  self.__defineSetter__('numericValue', <span class="fstat-no" title="function not covered" >function(val) {</span></span>
-<span class="cstat-no" title="statement not covered" >    if (val === undefined || val === null) <span class="cstat-no" title="statement not covered" >return self._clearValue();</span></span>
+<span class="cstat-no" title="statement not covered">  self.__defineSetter__('numericValue', <span class="fstat-no" title="function not covered">function(val) {</span></span>
+<span class="cstat-no" title="statement not covered">    if (val === undefined || val === null) <span class="cstat-no" title="statement not covered">return self._clearValue();</span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (isNaN(parseFloat(val)) || !isFinite(val)) {</span>
-<span class="cstat-no" title="statement not covered" >      throw new Error('Invalid numeric value assignment');</span>
+<span class="cstat-no" title="statement not covered">    if (isNaN(parseFloat(val)) || !isFinite(val)) {</span>
+<span class="cstat-no" title="statement not covered">      throw new Error('Invalid numeric value assignment');</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    self._value = val.toString();</span>
-<span class="cstat-no" title="statement not covered" >    self._numericValue = parseFloat(val);</span>
-<span class="cstat-no" title="statement not covered" >    self._formula = undefined;</span>
+<span class="cstat-no" title="statement not covered">    self._value = val.toString();</span>
+<span class="cstat-no" title="statement not covered">    self._numericValue = parseFloat(val);</span>
+<span class="cstat-no" title="statement not covered">    self._formula = undefined;</span>
   });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  self.__defineGetter__('valueForSave', <span class="fstat-no" title="function not covered" >function() {</span></span>
-<span class="cstat-no" title="statement not covered" >    return xmlSafeValue(self._formula || self._value);</span>
+<span class="cstat-no" title="statement not covered">  self.__defineGetter__('valueForSave', <span class="fstat-no" title="function not covered">function() {</span></span>
+<span class="cstat-no" title="statement not covered">    return xmlSafeValue(self._formula || self._value);</span>
   });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  self.save = <span class="fstat-no" title="function not covered" >function(cb) {</span></span>
-<span class="cstat-no" title="statement not covered" >    self._needsSave = false;</span>
+<span class="cstat-no" title="statement not covered">  self.save = <span class="fstat-no" title="function not covered">function(cb) {</span></span>
+<span class="cstat-no" title="statement not covered">    self._needsSave = false;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    var edit_id = 'https://spreadsheets.google.com/feeds/cells/key/worksheetId/private/full/R'+self.row+'C'+self.col;</span>
-<span class="cstat-no" title="statement not covered" >    var data_xml =</span>
+<span class="cstat-no" title="statement not covered">    var edit_id = 'https://spreadsheets.google.com/feeds/cells/key/worksheetId/private/full/R'+self.row+'C'+self.col;</span>
+<span class="cstat-no" title="statement not covered">    var data_xml =</span>
       '&lt;entry&gt;&lt;id&gt;'+self.id+'&lt;/id&gt;'+
       '&lt;link rel="edit" type="application/atom+xml" href="'+self.id+'"/&gt;'+
       '&lt;gs:cell row="'+self.row+'" col="'+self.col+'" inputValue="'+self.valueForSave+'"/&gt;&lt;/entry&gt;'
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    data_xml = data_xml.replace('&lt;entry&gt;', "&lt;entry xmlns='http://www.w3.org/2005/Atom' xmlns:gs='http://schemas.google.com/spreadsheets/2006'&gt;");</span>
+<span class="cstat-no" title="statement not covered">    data_xml = data_xml.replace('&lt;entry&gt;', "&lt;entry xmlns='http://www.w3.org/2005/Atom' xmlns:gs='http://schemas.google.com/spreadsheets/2006'&gt;");</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    spreadsheet.makeFeedRequest( self['_links']['edit'], 'PUT', data_xml, <span class="fstat-no" title="function not covered" >function(err, response) {</span></span>
-<span class="cstat-no" title="statement not covered" >      if (err) <span class="cstat-no" title="statement not covered" >return cb(err);</span></span>
-<span class="cstat-no" title="statement not covered" >      self.updateValuesFromResponseData(response);</span>
-<span class="cstat-no" title="statement not covered" >      cb();</span>
+<span class="cstat-no" title="statement not covered">    spreadsheet.makeFeedRequest( self['_links']['edit'], 'PUT', data_xml, <span class="fstat-no" title="function not covered">function(err, response) {</span></span>
+<span class="cstat-no" title="statement not covered">      if (err) <span class="cstat-no" title="statement not covered">return cb(err);</span></span>
+<span class="cstat-no" title="statement not covered">      self.updateValuesFromResponseData(response);</span>
+<span class="cstat-no" title="statement not covered">      cb();</span>
     });
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  self.del = <span class="fstat-no" title="function not covered" >function(cb) {</span></span>
-<span class="cstat-no" title="statement not covered" >    self.setValue('', cb);</span>
+<span class="cstat-no" title="statement not covered">  self.del = <span class="fstat-no" title="function not covered">function(cb) {</span></span>
+<span class="cstat-no" title="statement not covered">    self.setValue('', cb);</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  init();</span>
-<span class="cstat-no" title="statement not covered" >  return self;</span>
+<span class="cstat-no" title="statement not covered">  init();</span>
+<span class="cstat-no" title="statement not covered">  return self;</span>
 }
 &nbsp;
 module.exports = GoogleSpreadsheet;
 &nbsp;
 //utils
-var forceArray = <span class="fstat-no" title="function not covered" >function(val) {</span>
-<span class="cstat-no" title="statement not covered" >  if ( Array.isArray( val ) ) <span class="cstat-no" title="statement not covered" >return val;</span></span>
-<span class="cstat-no" title="statement not covered" >  if ( !val ) <span class="cstat-no" title="statement not covered" >return [];</span></span>
-<span class="cstat-no" title="statement not covered" >  return [ val ];</span>
+var forceArray = <span class="fstat-no" title="function not covered">function(val) {</span>
+<span class="cstat-no" title="statement not covered">  if ( Array.isArray( val ) ) <span class="cstat-no" title="statement not covered">return val;</span></span>
+<span class="cstat-no" title="statement not covered">  if ( !val ) <span class="cstat-no" title="statement not covered">return [];</span></span>
+<span class="cstat-no" title="statement not covered">  return [ val ];</span>
 }
-var xmlSafeValue = <span class="fstat-no" title="function not covered" >function(val){</span>
-<span class="cstat-no" title="statement not covered" >  if ( val == null ) <span class="cstat-no" title="statement not covered" >return '';</span></span>
-<span class="cstat-no" title="statement not covered" >  return String(val).replace(/&amp;/g, '&amp;amp;')</span>
+var xmlSafeValue = <span class="fstat-no" title="function not covered">function(val){</span>
+<span class="cstat-no" title="statement not covered">  if ( val == null ) <span class="cstat-no" title="statement not covered">return '';</span></span>
+<span class="cstat-no" title="statement not covered">  return String(val).replace(/&amp;/g, '&amp;amp;')</span>
       .replace(/&lt;/g, '&amp;lt;')
       .replace(/&gt;/g, '&amp;gt;')
       .replace(/"/g, '&amp;quot;');
 }
-var xmlSafeColumnName = <span class="fstat-no" title="function not covered" >function(val){</span>
-<span class="cstat-no" title="statement not covered" >  if (!val) <span class="cstat-no" title="statement not covered" >return '';</span></span>
-<span class="cstat-no" title="statement not covered" >  return String(val).replace(/[\s_]+/g, '')</span>
+var xmlSafeColumnName = <span class="fstat-no" title="function not covered">function(val){</span>
+<span class="cstat-no" title="statement not covered">  if (!val) <span class="cstat-no" title="statement not covered">return '';</span></span>
+<span class="cstat-no" title="statement not covered">  return String(val).replace(/[\s_]+/g, '')</span>
       .toLowerCase();
 }
 &nbsp;
@@ -2207,10 +2205,11 @@ var xmlSafeColumnName = <span class="fstat-no" title="function not covered" >fun
 &nbsp;
 &nbsp;
 &nbsp;</pre></td></tr>
-</table></pre>
+</tbody></table></pre>
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 11 2017 16:58:11 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Mon Apr 17 2017 22:25:46 GMT+0000 (UTC)</div>
 </div>
-</body>
-</html>
+
+
+</body></html>
